@@ -1,0 +1,90 @@
+@import "../../../sass/global";
+
+.specific-mentoring-container {
+  margin-top: 8rem;
+  &__header {
+    display: flex;
+    align-items: center;
+    padding-right: 12rem;
+    background-color: $color-grey-dark;
+    border-radius: 3rem 0 0rem 3rem;
+
+    &--mentor {
+      position: relative;
+      padding: 1rem 1.5rem;
+      background-color: $color-primary-c-light;
+      border-radius: 3rem;
+      z-index: 1;
+
+      &__inline {
+        display: flex;
+        align-items: flex-end;
+        span {
+          margin-bottom: 0.3rem;
+        }
+      }
+      span {
+        font-size: 10px;
+        padding: 0;
+      }
+      h3 {
+        margin: 0.2rem 0.3rem;
+      }
+    }
+
+    ul {
+      margin-left: -2rem;
+      padding: 0 0 0 3rem;
+      display: flex;
+      list-style: none;
+      border-radius: 3rem;
+
+      li {
+        padding: 1rem;
+        color: $color-grey-white;
+        background-color: $color-grey-dark;
+        font-size: 18px;
+        border-radius: 3rem;
+
+        &:hover {
+          cursor: pointer;
+          filter: brightness(115%);
+        }
+        &:active {
+          filter: brightness(108%);
+        }
+      }
+    }
+  }
+
+  &__content {
+    padding-top: 2rem;
+  }
+
+  h4 {
+    font-size: 10px;
+    position: fixed;
+    left: 14rem;
+    top: 4rem;
+    // transform: rotate(3deg);
+
+    img {
+      width: 3rem;
+      transform: rotate(-120deg) translateX(0.8rem) translateY(-0.4rem);
+      filter: contrast(60%);
+    }
+  }
+}
+
+.active {
+  color: $color-primary-c;
+}
+
+.bg {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 4rem;
+  z-index: -2;
+  background-color: $color-primary-lighter;
+}

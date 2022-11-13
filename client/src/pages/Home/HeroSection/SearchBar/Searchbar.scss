@@ -1,0 +1,40 @@
+@import "../../../../sass/global";
+
+.search {
+  display: flex;
+  height: 3rem;
+
+  input {
+    font-size: $font-size-m;
+    flex: 2 1 0;
+    border: 0px;
+    border-radius: 5px;
+    padding-left: 1.5rem;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  button {
+    border: 0px;
+    border-radius: 0px 5px 5px 0px;
+    padding: 0.2rem 1rem;
+    margin-left: -1.2rem;
+    flex: 0.2 1 0;
+    background-color: $color-primary;
+
+    &:hover {
+      cursor: pointer;
+      filter: brightness(95%);
+    }
+    &:active {
+      filter: brightness(90%);
+    }
+    span {
+      font-size: $font-size-m;
+      font-weight: $boldness-thick;
+      color: white;
+    }
+  }
+}

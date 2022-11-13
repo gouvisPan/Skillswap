@@ -1,0 +1,33 @@
+@import "../../sass/global";
+
+.header-container {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  padding: 0.5rem 0;
+  height: 3rem;
+
+  img {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    height: 2rem;
+  }
+}
+
+.desktop-nav {
+  position: absolute;
+  top: 1.5rem;
+  right: 2rem;
+  display: flex;
+  gap: 1rem;
+
+  a {
+    color: $color-grey-black;
+    text-decoration: none;
+
+    &:hover {
+      color: white;
+    }
+  }
+}

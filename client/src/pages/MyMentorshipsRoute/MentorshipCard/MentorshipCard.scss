@@ -1,0 +1,42 @@
+@import "../../../sass/global";
+
+.lesson-card {
+  width: 16rem;
+  height: 14rem;
+  border: 1px solid $color-grey;
+  box-shadow: 1px 1px 5px 1px rgba(50, 50, 50, 0.1);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+  }
+
+  h5 {
+    font-size: $font-size-m;
+    margin: 0;
+  }
+  p {
+    margin-top: 0rem;
+  }
+  &__bg {
+    margin-top: 0.5rem;
+    margin-bottom: 0.4rem;
+    width: 16rem;
+    height: 6rem;
+    z-index: -1;
+  }
+
+  &__badge {
+    width: 1.2rem;
+    height: 1.2rem;
+    position: absolute;
+    top: 0.3rem;
+    right: 0.3rem;
+  }
+}

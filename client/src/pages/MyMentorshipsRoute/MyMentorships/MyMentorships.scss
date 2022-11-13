@@ -1,0 +1,26 @@
+@import "../../../sass/global";
+
+.my-learning-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  h1 {
+    color: $color-grey-white;
+    background-color: $color-primary-darkest;
+    padding: 2rem $page-space-lr;
+  }
+
+  &__cards {
+    align-self: center;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin: 1rem;
+
+    &--clean-a {
+      text-decoration: none;
+      color: $color-grey-black;
+    }
+  }
+}

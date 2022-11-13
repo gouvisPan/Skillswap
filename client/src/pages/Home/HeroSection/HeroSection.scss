@@ -1,0 +1,37 @@
+@import "../../../sass/global";
+
+.hero-container {
+  position: absolute;
+
+  left: 4rem;
+  top: 8rem;
+  width: 90vw;
+
+  display: flex;
+  flex-direction: row;
+  gap: 8rem;
+
+  &__search-area {
+    h1 {
+      font-size: $font-size-xxl;
+      font-weight: $boldness-thicker;
+      color: $color-grey-black;
+      letter-spacing: 0.5px;
+    }
+  }
+
+  img {
+    width: 32rem;
+  }
+
+  &__bg {
+    position: fixed;
+    left: -10rem;
+    top: -3rem;
+    width: 140vw;
+    height: 70vh;
+    z-index: -2;
+    transform: rotate(-2deg);
+    background-color: $color-primary-c-light;
+  }
+}
