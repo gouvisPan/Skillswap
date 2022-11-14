@@ -9,6 +9,7 @@ import { dummyUser } from "./model/data/users";
 import { useAppDispatch } from "./hooks/hooks";
 import { userActions } from "./store/userSlice";
 import SpecificMentoring from "./pages/MyMentorshipsRoute/SpecificMentoring/SpecificMentoring";
+import Register from "./pages/auth/register/Register";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -21,6 +22,8 @@ function App() {
     <Router>
       <Header />
       <Routes>
+
+        <Route path="/" element={<Register />} />
         <Route path="/" element={<Home />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/learning" element={<Swap />} />

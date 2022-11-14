@@ -1,0 +1,74 @@
+@import "../../../sass/global";
+
+.register{
+    display: flex;
+    width: 100%;
+
+    &__left{
+        flex-grow: .75;
+        background-color: $color-grey-lighter;
+        display: flex;
+        height: 100vh;
+        flex-direction: column;
+        padding-top: 5rem;
+        align-items: center;
+        
+        h1{
+           color : $color-primary-light;
+           letter-spacing: 1.2px;
+           font-weight: 700;
+        }
+
+        &--icons{
+        display: flex;
+        gap:2rem;
+
+        &__icon{
+            font-size: 1.8rem;    
+            color: $color-grey-darker;
+
+            &:hover{
+                cursor: pointer;
+                
+            }
+        }
+    }
+    }
+
+    &__right{
+        flex-grow: .3;
+        background-color: $color-primary-light;
+        padding-top: 5rem;
+        display: flex;
+        flex-direction: column;
+        padding-top: 5rem;
+        align-items: center;
+        
+
+        h1{
+            color: $color-grey-lighter;
+            letter-spacing: 1.5px;
+        }
+        h5{
+            color: $color-grey-lighter;
+            font-weight: 500;
+        }
+        button{
+            font-weight: 400;
+            width: 10rem;
+            height: 3rem;
+            border-radius: 2rem;
+            background-color: transparent;
+            border: 1px solid white;
+
+            &:hover{
+                cursor: pointer;
+                filter: brightness(90%);
+                color: $color-primary-light;
+                background-color: white;
+                border: 1px solid transparent;
+                transition: .2s ease-in;
+            }
+        }
+    }
+}
