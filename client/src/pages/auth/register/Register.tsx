@@ -2,7 +2,7 @@ import React from 'react'
 import RegisterForm from './RegisterForm/RegisterForm'
 import './Register.scss'
 import { useState } from 'react'
-import {ImGoogle} from 'react-icons/im'
+import {FcGoogle} from 'react-icons/fc'
 import {ImFacebook} from 'react-icons/im'
 
 const Register = () => {
@@ -12,11 +12,13 @@ const Register = () => {
     <div className="register">
       <div className="register__left">
         <h1>Create Account</h1>
-        <div className="register__left--icons">
-          <ImGoogle className="register__left--icons__icon"/>
-          <ImFacebook className="register__left--icons__icon"/>
-        </div>
         <RegisterForm/>
+        <h3>Or</h3>
+        <div className="register__left--google">
+          <FcGoogle className="register__left--google__icon" />
+          <span>Login with google</span>
+        </div>
+        
       </div>
       <div className="register__right">
         <h1>SkillSwap User?</h1>
