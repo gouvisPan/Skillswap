@@ -2,7 +2,8 @@
 
 .register{
     display: flex;
-    width: 100%;
+    width: 100%;    
+
 
     &__left{
         flex-grow: .75;
@@ -19,7 +20,9 @@
            letter-spacing: 1.2px;
            font-weight: 700;
         }
-
+        h3{
+            font-weight: 500;
+        }
         &--google{
             display: flex;
             align-items: center;
@@ -52,8 +55,10 @@
     }
 
     &__right{
+        z-index: 2;
         flex-grow: .3;
         background-color: $color-primary-light;
+        // background: linear-gradient(90deg, $color-primary-light 0%, $color-primary 100%);
         padding-top: 5rem;
         display: flex;
         flex-direction: column;

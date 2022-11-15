@@ -4,6 +4,7 @@ import './Register.scss'
 import { useState } from 'react'
 import {FcGoogle} from 'react-icons/fc'
 import {ImFacebook} from 'react-icons/im'
+import Shapes from '../../../components/Header/UI/shapes/Shapes'
 
 const Register = () => {
   const [isRegistered, setIsRegister] = useState(false);
@@ -21,6 +22,7 @@ const Register = () => {
         
       </div>
       <div className="register__right">
+        <Shapes/>
         <h1>SkillSwap User?</h1>
         <h5>Welcome back! Get back to your growth journey right away</h5>
         <button>Sign In</button>
