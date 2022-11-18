@@ -2,6 +2,7 @@ import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import { useAppSelector } from "../../hooks/hooks";
 import Menteeship from "../../model/Menteeship";
+import Skill from "../../model/Skill";
 import MenteeItem from "./MenteeItem/MenteeItem";
 import "./MyMenteeships.scss";
 
@@ -24,8 +25,8 @@ const MyMenteeships = () => {
       ) : (
         <Fragment>
           <div className="menteeships__categories">
-            {mySkills.map((s) => (
-              <span>{s}</span>
+            {mySkills.map((s: Skill) => (
+              <span>{s.name}</span>
             ))}
           </div>
           <div className="menteeships__list">

@@ -1,18 +1,19 @@
 import { useParams } from "react-router-dom";
 import { useAppSelector } from "../../../hooks/hooks";
-import Learning from "../../../model/Mentorship";
 import "./SpecificMentoring.scss";
 import { useState } from "react";
 import arrow from "../../../assets/images/doodly-arrow.png";
 import Messages from "./Messages/Messages";
 import Tasks from "./Tasks/Tasks";
 import Resources from "./Resources/Resources";
+import Mentorship from "../../../model/Mentorship";
 
 const SpecificMentoring = () => {
   const [mountedPage, setMountedPage] = useState(0);
-  const myMentorships: Learning[] = useAppSelector(
+  const myMentorships: Mentorship[] = useAppSelector(
     (state) => state.user.myMentorships
   );
+  
   let { learningId } = useParams();
   const activeMetorship = myMentorships.find((m) => m.id === learningId);
   const [progress, setProgress] = useState(activeMetorship!.progress);

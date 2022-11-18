@@ -3,21 +3,21 @@ import Home from "./pages/Home/Home";
 import Profile from "./pages/Profile/Profile";
 import Error from "./pages/Error/Error";
 import Header from "./components/Header/Header";
-import { useState, useEffect } from "react";
-import { dummyUser } from "./model/data/users";
+import {useEffect } from "react";
 import { useAppDispatch } from "./hooks/hooks";
-import { getUser } from "./store/actions/usersActions";
+import { fetchUser } from "./store/actions/user-actions";
 import SpecificMentoring from "./pages/MyMentorshipsRoute/SpecificMentoring/SpecificMentoring";
 import Register from "./pages/auth/Auth";
 import Auth from "./pages/auth/Auth";
 import MyMentees from "./pages/MyMenteesRoute/MyMenteeships";
 import MyLearning from "./pages/MyMentorshipsRoute/MyMentorships/MyMentorships";
+import { dummyUser } from "./model/data/users";
 
 function App() {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(getUser());
+    dispatch(fetchUser());
   }, [dummyUser]);
 
   return (

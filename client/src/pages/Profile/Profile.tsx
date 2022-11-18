@@ -1,9 +1,6 @@
 import React from "react";
 import "./Profile.scss";
-import { MdModeEditOutline } from "react-icons/md";
 import placeholder from "../../assets/images/profile-image-placeholde.png";
-import ToggledInput from "./Inputs/ToggledInput";
-import uiSlice, { uiActions } from "../../store/ui-slice";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { useState } from "react";
 import BasicInfo from "./subPages/BasicInfo";

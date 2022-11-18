@@ -31,7 +31,7 @@ const t3 = new Task(
   30
 );
 
-t1.setDone(true);
+
 
 const r1 = new Resource("Google Doc", "https://www.random.com/balhblah?nana", [
   "HTML",
