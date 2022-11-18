@@ -60,6 +60,18 @@ exports.registerUser = asyncHandler(async (req, res) => {
   }
 });
 
+exports.logoutUser = asyncHandler(async (req, res) => {
+  res.cookie("token", "", {
+    path: "/",
+    httpOnly: true,
+    expires: new Date(0),
+    sameSite: "none",
+  });
+  res.status(200).json({
+    message: "Logged out successfuly!",
+  });
+});
+
 exports.loginUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
 
@@ -75,11 +87,18 @@ exports.loginUser = asyncHandler(async (req, res) => {
     throw new Error("Wrong Email!!");
   }
 
-  console.log(user);
   const passwordIsCorrect = await bcrypt.compare(password, user.password);
 
-  console.log(password);
   if (passwordIsCorrect) {
+    const token = generateToken(user._id);
+
+    res.cookie("token", token, {
+      path: "/",
+      httpOnly: true,
+      expires: new Date(Date.now() + 1000 * 86400),
+      sameSite: "none",
+    });
+
     const { _id, name, email, bio, photo, password } = user;
     res.status(200).json({
       _id,
@@ -87,6 +106,7 @@ exports.loginUser = asyncHandler(async (req, res) => {
       email,
       bio,
       photo,
+      token,
     });
   } else {
     res.status(400);

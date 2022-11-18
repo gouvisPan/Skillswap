@@ -1,11 +1,11 @@
 import "./MyMentorships.scss";
-import Learning from "../../../model/Learning";
+import Learning from "../../../model/Mentorship";
 import MentorshipCard from "../MentorshipCard/MentorshipCard";
 import { useAppSelector } from "../../../hooks/hooks";
 import { Link } from "react-router-dom";
 
 const MyLearning = () => {
-  const myLearnings = useAppSelector((state) => state.user.myLearnings);
+  const myLearnings = useAppSelector((state) => state.user.myMentorships);
 
   return (
     <div className="page my-learning-container">

@@ -6,7 +6,6 @@ import {
   persistStore,
   persistCombineReducers,
 } from "redux-persist";
-import combineReducers from "redux";
 import thunk from "redux-thunk";
 import userSlice from "./userSlice";
 import uiSlice from "./ui-slice";

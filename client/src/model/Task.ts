@@ -12,6 +12,10 @@ class Task {
     this.minTime = min;
     this.maxTime = max;
   }
+
+  setDone = (d: boolean) => {
+    this.done = d;
+  };
 }
 
 export default Task;

@@ -1,5 +1,6 @@
 import React from "react";
 import Task from "../../../../model/Task";
+import TaskItem from "./TaskItem";
 import "./Tasks.scss";
 
 const Tasks: React.FC<{ tasks: Task[] }> = (props) => {
@@ -7,7 +8,9 @@ const Tasks: React.FC<{ tasks: Task[] }> = (props) => {
 
   return (
     <div className="tasks-container">
-      <h2>My Tasks</h2>
+      {props.tasks.map((t) => (
+        <TaskItem task={t} />
+      ))}
     </div>
   );
 };

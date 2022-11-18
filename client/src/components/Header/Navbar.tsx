@@ -7,10 +7,10 @@ const Navbar = () => {
   return (
     <nav className="desktop-nav">
       <NavLink to="/learning">
-        <span>Learning</span>
+        <span>My Mentors</span>
       </NavLink>
-      <NavLink to="/myConnections">
-        <span>Connections</span>
+      <NavLink to="/teaching">
+        <span>My Mentees</span>
       </NavLink>
       <NavLink to="/profile">
         <CgProfile />

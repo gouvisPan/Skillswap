@@ -1,26 +1,29 @@
-import Task from "./Task";
+import Resource from "../Resource";
+import Task from "../Task";
 
-class Learning {
+abstract class mShip {
+  id: string;
   name: string;
   pointsPerHour: number;
-  id: string;
   coverImg: string;
-  mentor: string;
   tasks: Task[];
+  resources: Resource[];
+  progress: number;
 
   constructor(
     lName: string,
     lPoints: number,
     lCoverImg: string,
-    mentor: string
+    progress: number
   ) {
     this.name = lName;
     this.pointsPerHour = lPoints;
     this.coverImg = lCoverImg;
     this.id = lName.toString();
-    this.mentor = mentor;
     this.tasks = [];
+    this.resources = [];
+    this.progress = progress;
   }
 }
 
-export default Learning;
+export default mShip;

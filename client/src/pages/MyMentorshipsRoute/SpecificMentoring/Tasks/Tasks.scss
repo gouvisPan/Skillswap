@@ -1,0 +1,32 @@
+@import "../../../../sass/global";
+
+.tasks-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.task {
+  background-color: $color-grey-white;
+  padding: 0.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+
+  h3 {
+    margin: 0;
+  }
+  p {
+    font-weight: 400;
+    margin: 0;
+  }
+  span {
+    font-size: 12px;
+  }
+}
+
+.done {
+  filter: brightness(60%);
+
+  p {
+  }
+}

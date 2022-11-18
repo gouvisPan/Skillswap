@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useAppSelector } from "../../../hooks/hooks";
-import Learning from "../../../model/Learning";
+import Learning from "../../../model/Mentorship";
 import "./SpecificMentoring.scss";
 import { useState } from "react";
 import arrow from "../../../assets/images/doodly-arrow.png";
@@ -9,14 +9,13 @@ import Tasks from "./Tasks/Tasks";
 import Resources from "./Resources/Resources";
 
 const SpecificMentoring = () => {
-  const [progress, setProgress] = useState(40);
   const [mountedPage, setMountedPage] = useState(0);
   const myMentorships: Learning[] = useAppSelector(
-    (state) => state.user.myLearnings
+    (state) => state.user.myMentorships
   );
-
   let { learningId } = useParams();
   const activeMetorship = myMentorships.find((m) => m.id === learningId);
+  const [progress, setProgress] = useState(activeMetorship!.progress);
 
   let mountedJsx = <Messages />;
 
@@ -25,10 +24,10 @@ const SpecificMentoring = () => {
       mountedJsx = <Messages />;
       break;
     case 1:
-      mountedJsx = <Messages />;
+      mountedJsx = <Tasks tasks={activeMetorship!.tasks} />;
       break;
     case 2:
-      mountedJsx = <Resources />;
+      mountedJsx = <Resources resources={activeMetorship!.resources} />;
   }
 
   return (
@@ -43,7 +42,7 @@ const SpecificMentoring = () => {
             <h3>{activeMetorship?.name}</h3>
             <span>by</span>
           </div>
-          <h3>{activeMetorship?.mentor}</h3>
+          <h3>{activeMetorship?.mentor.name}</h3>
         </div>
         <ul>
           <li

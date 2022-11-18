@@ -1,23 +1,30 @@
-import Learning from "./Learning";
+import Menteeship from "./Menteeship";
+import Mentorship from "./Mentorship";
+import Learning from "./Mentorship";
 import Skill from "./Skill";
 
 class User {
   id: string;
   name: string;
   sp: number;
-  myLearnings: Learning[];
+  myMentorships: Mentorship[];
+  myMenteeships: Menteeship[];
   mySkills: Skill[];
 
   constructor(mName: string) {
     this.name = mName;
     this.id = new Date().toISOString();
     this.sp = 0;
-    this.myLearnings = [];
+    this.myMentorships = [];
+    this.myMenteeships = [];
     this.mySkills = [];
   }
 
-  addLearning(l: Learning) {
-    this.myLearnings.push(l);
+  addMentorship(m: Mentorship) {
+    this.myMentorships.push(m);
+  }
+  addMenteeship(m: Menteeship) {
+    this.myMenteeships.push(m);
   }
 }
 
