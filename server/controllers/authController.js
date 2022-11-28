@@ -119,6 +119,8 @@ exports.updatePassword = asyncHandler(async (req, res, next) => {
   sendToken(user, 200, res);
 });
 
+exports.updateUserData = asyncHandler(async (req, res, next) => {});
+
 exports.protect = asyncHandler(async (req, res, next) => {
   let token;
   if (
