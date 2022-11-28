@@ -1,5 +1,5 @@
 import React from "react";
-import Skill from "../../../model/Skill";
+import Skill from "../../../../model/Skill";
 import "./Skills.scss";
 import { GrFormAdd } from "react-icons/gr";
 

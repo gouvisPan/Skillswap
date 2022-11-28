@@ -6,13 +6,14 @@ import Task from "../Task";
 import Resource from "../Resource";
 import Mentorship from "../Mentorship";
 import Menteeship from "../Menteeship";
-
+import Skill from '../../model/Skill'
 const user1 = new User("Sandy", "sandy@gmail.com", "sandy");
 const user2 = new User("Panagiotis", "panagiotis@gmail.com", "panagiotis");
 
+
 const t1 = new Task(
   "Learn Basic HTML",
-  "I suggest to try a UDEMY course first and then to challenge your knowlege by creating a basic project",
+  "I suggest to try a UDEMY course first and then to challenge your knowledge by creating a basic project",
   4,
   8
 );
@@ -46,6 +47,13 @@ const r3 = new Resource(
   ["Javascript"]
 );
 
+const skills = [
+ new Skill("Web Development",1.3, "I'll mentor you throughout your web development journey!! I will  teach you" + 
+            "the current hot stack with tools like React Nodejs and Express as well as the basics of CSS and HTML.", {info : "Working experience", years: 5}),
+ new Skill("English",1.1,"",{info : "Native Speaker", years: 25}),
+ new Skill("UX / UI",1.1,"",{info : "Native Speaker", years: 25}),
+]
+user1.mySkills = skills;
 const l1 = new Mentorship(user2, "Web dev", 1.3, webDev, 40);
 const l2 = new Mentorship(user2, "Chinese", 1.4, chinese, 60);
 const l3 = new Mentorship(user2, "English", 1, "", 50);
@@ -77,4 +85,5 @@ user1.addMenteeship(m1);
 user1.addMenteeship(m2);
 user1.addMenteeship(m3);
 
-export const dummyUser = user1;
+export const dummyUser1 = user1;
+export const dummyUser2 = user2;

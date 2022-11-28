@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { useState } from "react";
 import BasicInfo from "./subPages/BasicInfo";
 import Photo from "./subPages/Photo";
-import Skills from "./subPages/Skills";
+import Skills from "./subPages/Skills/Skills";
 import AccountSecurity from "./subPages/AccountSecurity";
 import DeleteAccount from "./subPages/DeleteAccount";
 
@@ -13,11 +13,12 @@ const Profile = () => {
   const dispatch = useAppDispatch();
   const isNotEditing = useAppSelector((state) => state.ui.profileIsLabel);
   const [mountedPage, setMountedPage] = useState(0);
+  const user = useAppSelector((state) => state.user.data);
   let mountedJsx = <BasicInfo />;
 
   switch (mountedPage) {
     case 0:
-      mountedJsx = <BasicInfo />;
+      mountedJsx = <BasicInfo/>;
       break;
     case 1:
       mountedJsx = <Photo />;
@@ -36,7 +37,7 @@ const Profile = () => {
     <div className="profile-container c">
       <div className="profile-container__basic-info">
         <img src={placeholder} />
-        <h3>Jonathan Smith</h3>
+        <h3>{user?.name}</h3>
       </div>
       <div className="profile-container__title">
         <h2>Profile Info</h2>

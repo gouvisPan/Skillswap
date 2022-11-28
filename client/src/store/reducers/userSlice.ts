@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import User from "../../model/User";
-import { createUser, loginUser, logoutUser } from "../actions/user-actions";
+import { createUser, loginDummyUser, loginUser, logoutUser } from "../actions/user-actions";
+import {dummyUser1, dummyUser2} from "../../model/data/users"
 
 interface userSliceState {
   isLoading: boolean;
@@ -9,14 +10,17 @@ interface userSliceState {
   error: null | string;
   data: null | User;
 }
-const user: User = JSON.parse(localStorage.getItem("user") || "{}");
+let user: User = JSON.parse(localStorage.getItem("user") || "{}");
+
+
 
 const initialState: userSliceState = {
   isLoading: false,
   isSuccess: false,
   isAuthenticated: false,
   error: null,
-  data: user ? user : null,
+  data: dummyUser1
+  // data: user ? user : null,
 };
 
 const userSlice = createSlice({
@@ -64,6 +68,9 @@ const userSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload;
         state.data = null;
+      })
+      .addCase(loginDummyUser.fulfilled, (state, action: PayloadAction<any>) =>{
+        state.data = action.payload;
       });
   },
 });
