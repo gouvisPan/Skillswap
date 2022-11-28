@@ -7,8 +7,8 @@ import Resource from "../Resource";
 import Mentorship from "../Mentorship";
 import Menteeship from "../Menteeship";
 
-const user1 = new User("Sandy");
-const user2 = new User("Panagiotis");
+const user1 = new User("Sandy", "sandy@gmail.com", "sandy");
+const user2 = new User("Panagiotis", "panagiotis@gmail.com", "panagiotis");
 
 const t1 = new Task(
   "Learn Basic HTML",
@@ -30,8 +30,6 @@ const t3 = new Task(
   25,
   30
 );
-
-
 
 const r1 = new Resource("Google Doc", "https://www.random.com/balhblah?nana", [
   "HTML",

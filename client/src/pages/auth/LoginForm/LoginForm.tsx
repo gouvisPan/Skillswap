@@ -1,15 +1,28 @@
 import { Form, Formik } from "formik";
+import { useEffect } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
+import { useAppDispatch, useAppSelector } from "../../../hooks/hooks";
+import { loginUser } from "../../../store/actions/user-actions";
 import "../RegisterForm/RegisterForm.scss";
 import TextField from "../TextField";
 
 const LoginForm = () => {
+  const dispatch = useAppDispatch();
+
   const validate = Yup.object({
     email: Yup.string().email("Email is invalid").required("Email is required"),
     password: Yup.string().required("Password is required"),
   });
 
-  const onSubmit = () => {};
+  const onSubmit = (email: string, password: string) => {
+    dispatch(
+      loginUser({
+        email,
+        password,
+      })
+    );
+  };
 
   return (
     <Formik
@@ -19,8 +32,7 @@ const LoginForm = () => {
       }}
       validationSchema={validate}
       onSubmit={(values) => {
-        console.log(values);
-        onSubmit();
+        onSubmit(values.email, values.password);
       }}
     >
       {(formik) => (

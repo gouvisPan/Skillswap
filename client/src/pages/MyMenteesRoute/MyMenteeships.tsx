@@ -7,8 +7,10 @@ import MenteeItem from "./MenteeItem/MenteeItem";
 import "./MyMenteeships.scss";
 
 const MyMenteeships = () => {
-  const mySkills = useAppSelector((state) => state.user.mySkills);
-  const myMenteeships = useAppSelector((state) => state.user.myMenteeships);
+  const mySkills = useAppSelector((state) => state.user.data!.mySkills);
+  const myMenteeships = useAppSelector(
+    (state) => state.user.data!.myMenteeships
+  );
   const [currentCategory, setCurrentCategory] = useState(mySkills[0]);
 
   return (

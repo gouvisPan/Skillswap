@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const bcryptjs = require("bcryptjs");
+const crypto = require("crypto");
 
 const userSchema = new mongoose.Schema(
   {
@@ -21,7 +22,7 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: [true, "Please insert a password"],
       minLength: [6, "Password must be 6 characters or more"],
-      //   maxLength: [23, "Password mus be up to 23 characters"],
+      select: false,
     },
     photo: {
       type: String,
@@ -34,9 +35,21 @@ const userSchema = new mongoose.Schema(
       minLength: 20,
       maxLength: [350, "Bio must be under 350 characters"],
     },
+    changedPasswordAt: Date,
+    passwordResetToken: String,
+    passwordResetExpires: Number,
   },
   { timestamps: true }
 );
+
+userSchema.pre("save", async function (next) {
+  if (!this.isModified("password") || this.isNew) return next();
+
+  this.changedPasswordAt = Date.now() - 1000;
+
+  next();
+});
+
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();
 
@@ -46,6 +59,32 @@ userSchema.pre("save", async function (next) {
   this.password = hashedPassword;
   next();
 });
+userSchema.methods.correctPassword = async function (
+  candidatePassword,
+  userPassword
+) {
+  return await bcryptjs.compare(candidatePassword, userPassword);
+};
+
+userSchema.methods.changedPasswordAfter = function (JWTtimestamp) {
+  if (this.changedPasswordAt) {
+    const changedTimestamp = this.changedPasswordAt.getTime() / 1000;
+    return JWTtimestamp < changedTimestamp;
+  }
+  return false;
+};
+
+userSchema.methods.createPWDResetToken = function () {
+  const token = crypto.randomBytes(32).toString("hex");
+
+  this.passwordResetToken = crypto
+    .createHash("sha256")
+    .update(token)
+    .digest("hex");
+
+  this.passwordResetExpires = Date.now() + 60000;
+  return token;
+};
 
 const User = mongoose.model("User", userSchema);
 module.exports = User;

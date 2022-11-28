@@ -1,11 +1,10 @@
 const bodyParser = require("body-parser");
 const { urlencoded } = require("body-parser");
 const express = require("express");
-const mongoose = require("mongoose");
-const { errorHandler } = require("./middleware/errorMiddleware");
 const userRoute = require("./routes/userRoute");
+const mentorshipRoute = require("./routes/mentorshipsRoute");
 const cookieParser = require("cookie-parser");
-
+const globalErrorHandler = require("./middleware/errorMiddleware");
 const app = express();
 
 //Middlewares
@@ -26,6 +25,14 @@ app.use(function (req, res, next) {
 
 //Route Middlewaren
 app.use("/api/v1/users", userRoute);
+app.use("/api/v1/mentorships", mentorshipRoute);
 
-app.use(errorHandler);
+app.all("*", (req, res, next) => {
+  res.status(404).json({
+    status: "fail",
+    message: `Server cant find this route:  ${req.originalUrl}`,
+  });
+});
+
+app.use(globalErrorHandler);
 module.exports = app;

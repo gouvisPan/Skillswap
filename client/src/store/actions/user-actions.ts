@@ -1,30 +1,40 @@
-import type { AppDispatch } from "../../store/reducers";
-import * as api from "../../api/index";
-import userSlice from "../reducers/userSlice";
-import User from "../../model/User";
-import { dummyUser } from "../../model/data/users";
-import { Action } from "@remix-run/router";
+import * as api from "../../api/AuthService";
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import { NewUser } from "../../model/auth/NewUser";
+import LoginCredentials from "../../model/LoginCredentials";
 
-export const fetchUser = (dispatch: AppDispatch) => {
-  console.log(dummyUser);
-  dispatch(userSlice.actions.updateUser(dummyUser));
+export const loginUser = createAsyncThunk(
+  "user/login",
+  async (credentials: LoginCredentials, thunkApi) => {
+    try {
+      return await api.fetchUser(credentials);
+    } catch (error: any) {
+      thunkApi.rejectWithValue(error.message);
+    }
+  }
+);
 
-  return userSlice.actions.updateUser(dummyUser);
-  // try {
-  //   // const { data } = await api.fetchUser;
-  //   // console.log(data);
-  
-  // } catch (error: any) {
-  //   console.log(error.message);
-  // }
-};
+export const createUser = createAsyncThunk(
+  "user/register",
+  async (user: NewUser, thunkApi) => {
+    try {
+      return await api.createUser(user);
+    } catch (error: any) {
+      thunkApi.rejectWithValue(error.message);
+    }
+  }
+);
+export const logoutUser = createAsyncThunk(
+  "user/logout",
+  async (_: void, thunkApi) => {
+    try {
+      const response = await api.logoutUser();
 
-// export const createUser = () => async (dispatch: AppDispatch) => {
-//   try {
-//     const { resporse } = await api.fetchUsers;
-//     dispatch(userSlice.actions.fetchUser(data));
+      if (response.ok) localStorage.removeItem("user");
 
-//   } catch (error: any) {
-//     console.log(error.message);
-//   }
-// };
+      return response.data;
+    } catch (error: any) {
+      thunkApi.rejectWithValue(error.message);
+    }
+  }
+);

@@ -1,12 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 import storage from "redux-persist/lib/storage";
-import {
-  persistReducer,
-  persistStore,
-  persistCombineReducers,
-} from "redux-persist";
-import thunk from "redux-thunk";
+import { persistStore, persistCombineReducers } from "redux-persist";
 import userSlice from "./userSlice";
 import uiSlice from "./ui-slice";
 
@@ -25,7 +20,6 @@ const persistedReducer = persistCombineReducers(persistConfig, userReducer);
 export const store = configureStore({
   reducer: persistedReducer,
   devTools: process.env.NODE_ENV !== "production",
-  middleware: [thunk],
 });
 
 export const persistor = persistStore(store);

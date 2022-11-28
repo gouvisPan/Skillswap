@@ -7,11 +7,14 @@ const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: "1d" });
 };
 
+exports.getAllUsers -
+  asyncHandler(async (req, res) => {
+    const allUsers = await User.find();
+  });
+
 exports.registerUser = asyncHandler(async (req, res) => {
   const { name, email, password } = req.body;
 
-  console.log(req.body);
-  console.log(name, email, password);
   if (!name || !email || !password) {
     res.status(400);
     throw new Error("Please fill in all required fields");
@@ -25,7 +28,7 @@ exports.registerUser = asyncHandler(async (req, res) => {
 
   if (userExists) {
     res.status(400);
-    throw new Error("Email has already benn used");
+    throw new Error("Email has already been used");
   }
 
   const user = await User.create({

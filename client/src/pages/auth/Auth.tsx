@@ -1,15 +1,28 @@
 import React, { Fragment } from "react";
 import RegisterForm from "./RegisterForm/RegisterForm";
 import "./Auth.scss";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FcGoogle } from "react-icons/fc";
 import Shapes from "../../components/UI/shapes/Shapes";
 import LoginForm from "./LoginForm/LoginForm";
+import { useAppSelector } from "../../hooks/hooks";
+import { useNavigate } from "react-router-dom";
 
 const Auth: React.FC = () => {
   const [whiteCSS, setwhiteCss] = useState("register__left");
   const [colorfulCSS, setColorfulCss] = useState("register__right");
   const [signIn, setSignIn] = useState(true);
+
+  const { isSuccess, isLoading, data, isAuthenticated } = useAppSelector(
+    (state) => state.user
+  );
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isAuthenticated || data) {
+      navigate("/home");
+    }
+  });
 
   const signInHandler = () => {
     setwhiteCss(`register__left unmountWR`);
@@ -32,7 +45,6 @@ const Auth: React.FC = () => {
   const whiteJSX = signIn ? (
     <Fragment>
       <h1>Sign In</h1>
-
       <LoginForm />
       <h3>Or</h3>
       <div className="register__left--google">

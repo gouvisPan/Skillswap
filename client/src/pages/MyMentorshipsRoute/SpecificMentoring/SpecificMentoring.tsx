@@ -11,9 +11,9 @@ import Mentorship from "../../../model/Mentorship";
 const SpecificMentoring = () => {
   const [mountedPage, setMountedPage] = useState(0);
   const myMentorships: Mentorship[] = useAppSelector(
-    (state) => state.user.myMentorships
+    (state) => state.user.data!.myMentorships
   );
-  
+
   let { learningId } = useParams();
   const activeMetorship = myMentorships.find((m) => m.id === learningId);
   const [progress, setProgress] = useState(activeMetorship!.progress);
