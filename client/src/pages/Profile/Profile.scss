@@ -2,13 +2,12 @@
 
 .profile-container {
   border: 1px $color-grey-dark;
-
   box-shadow: 2px 2px 5px 2px rgba($color: #000000, $alpha: 0.1);
   display: grid;
   grid-template-columns: 1fr 5fr;
 
   &__basic-info {
-    background-color: $color-primary;
+    background-color: $color-primary-light;
     display: flex;
     flex-direction: column;
     padding: 2rem;
@@ -16,6 +15,7 @@
     height: 10rem;
     align-items: flex-start;
     justify-content: center;
+    border-bottom: 5px $color-grey-dark solid;
 
     img {
       width: 6rem;
@@ -50,36 +50,36 @@
   }
 
   &__list {
+
     width: 100%;
     height: 20rem;
     display: flex;
     flex-direction: column;
     list-style: none;
-    padding: 1rem 0;
-
-    margin: 1rem 0;
+    padding: 0;
+    background-color: $color-primary-c-light;
+    margin: -.2rem 0;
 
     li {
       font-weight: 500;
       padding: 0.5rem 1.5rem;
-
       &:hover {
         cursor: pointer;
         color: white;
-        background-color: $color-primary;
+        background-color: $color-primary-light;
         transition: 0.3s ease-in-out;
       }
     }
   }
   &__active {
-    border-bottom: 2px solid $color-primary;
-    border-top: 2px solid $color-primary;
+    border-left: 10px solid $color-primary-light;
+    // border-top: 2px solid $color-primary;
     transition: 0.3s ease-in-out;
     font-weight: 600;
+  
 
     &:hover {
       cursor: pointer;
-      filter: brightness(90%);
     }
   }
 
