@@ -10,6 +10,8 @@ class User {
   name: string;
   sp: number;
   photo: string;
+  slogan: string;
+  bio: string;
   myMentorships: Mentorship[];
   myMenteeships: Menteeship[];
   mySkills: Skill[];
@@ -24,6 +26,8 @@ class User {
     this.myMentorships = [];
     this.myMenteeships = [];
     this.mySkills = [];
+    this.slogan="";
+    this.bio="";
   }
 
   addMentorship(m: Mentorship) {
