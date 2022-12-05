@@ -1,0 +1,105 @@
+button {
+  font-size: 18px;
+  padding: 0.4rem 0.6rem;
+  font-weight: 600;
+  color: white;
+  border: 0px;
+  border-radius: 5px;
+}
+
+body {
+  margin: 0;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "Poppins", sans-serif;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+.page {
+  margin-top: 4rem;
+}
+
+.c {
+  margin: 6rem 12rem 0rem 12rem;
+}
+
+.profile-container {
+  border: 1px #495057;
+  box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.1);
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+}
+.profile-container__basic-info {
+  background-color: #38d9a9;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  width: 10rem;
+  height: 10rem;
+  align-items: flex-start;
+  justify-content: center;
+  border-bottom: 5px #495057 solid;
+}
+.profile-container__basic-info img {
+  width: 6rem;
+  align-self: center;
+}
+.profile-container__basic-info h3 {
+  font-size: 18px;
+  color: white;
+  align-self: center;
+}
+.profile-container__title {
+  margin: 2.5rem 5rem;
+  padding-bottom: -2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: 2px solid #495057;
+}
+.profile-container__title h2 {
+  font-size: 28px;
+  letter-spacing: 0.5px;
+  font-weight: 800;
+  padding: 0;
+}
+.profile-container__title h4 {
+  margin-top: -0.5rem;
+  padding: 0;
+  color: #495057;
+}
+.profile-container__list {
+  width: 100%;
+  height: 20rem;
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding: 0;
+  background-color: #ffd8a8;
+  margin: -0.2rem 0;
+}
+.profile-container__list li {
+  font-weight: 500;
+  padding: 0.5rem 1.5rem;
+}
+.profile-container__list li:hover {
+  cursor: pointer;
+  color: white;
+  background-color: #38d9a9;
+  transition: 0.3s ease-in-out;
+}
+.profile-container__active {
+  border-left: 10px solid #38d9a9;
+  transition: 0.3s ease-in-out;
+  font-weight: 600;
+}
+.profile-container__active:hover {
+  cursor: pointer;
+}
+.profile-container__page {
+  margin-bottom: 10rem;
+}/*# sourceMappingURL=Profile.css.map */

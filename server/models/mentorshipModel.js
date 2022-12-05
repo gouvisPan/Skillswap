@@ -10,14 +10,6 @@ const mentorshipSchema = new mongoose.Schema(
       type: String,
       required: [true, "Please insert SP"],
     },
-    mentorID: {
-      type: String,
-      required: [true, "Please insert MentorID"],
-    },
-    menteeID: {
-      type: String,
-      required: [true, "Please insert MentorID"],
-    },
     img: {
       type: String,
       default:
@@ -27,9 +19,27 @@ const mentorshipSchema = new mongoose.Schema(
       type: Number,
       default: 0,
     },
+    description: String,
+    resources: [
+      {
+        type: mongoose.Schema.ObjectId,
+        ref: "Resource",
+      },
+    ],
+    tasks: [],
   },
-  { timestamps: true }
+  { timestamps: true, toJSON: { virtuals: true }, toObject: { virtuals: true } }
 );
+
+mentorshipSchema.virtual("messages", {
+  ref: "Message",
+  foreignField: "mentorship",
+  localField: "_id",
+});
+
+mentorshipSchema.pre(/^find/, async function () {
+  this.populate("resources");
+});
 
 const Mentorship = mongoose.model("Mentorship", mentorshipSchema);
 module.exports = Mentorship;

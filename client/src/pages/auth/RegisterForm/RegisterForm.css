@@ -1,0 +1,73 @@
+button {
+  font-size: 18px;
+  padding: 0.4rem 0.6rem;
+  font-weight: 600;
+  color: white;
+  border: 0px;
+  border-radius: 5px;
+}
+
+body {
+  margin: 0;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "Poppins", sans-serif;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+.page {
+  margin-top: 4rem;
+}
+
+.c {
+  margin: 6rem 12rem 0rem 12rem;
+}
+
+.form-container__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3.5rem;
+}
+.form-container__content--text-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  margin-top: 2rem;
+}
+.form-container__content--text-field {
+  position: relative;
+}
+.form-container__content--text-field input {
+  width: 20rem;
+  border-radius: 3rem;
+  height: 2rem;
+  border: solid 1px #212529;
+  padding: 0.1rem 0.8rem;
+}
+.form-container__content--text-field__error {
+  position: absolute;
+  top: 0;
+  font-size: 12px;
+  left: 60%;
+  top: 0.5rem;
+}
+.form-container__content--submit-btn {
+  font-weight: 400;
+  width: 10rem;
+  height: 3rem;
+  border-radius: 2rem;
+  background-color: #38d9a9;
+  border: 1px solid white;
+}
+.form-container__content--submit-btn:hover {
+  cursor: pointer;
+  color: #38d9a9;
+  background-color: white;
+  border: 1px solid;
+  transition: 0.2s ease-in;
+}/*# sourceMappingURL=RegisterForm.css.map */

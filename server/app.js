@@ -3,6 +3,8 @@ const { urlencoded } = require("body-parser");
 const express = require("express");
 const userRoute = require("./routes/userRoute");
 const mentorshipRoute = require("./routes/mentorshipsRoute");
+const resourceRoute = require("./routes/resourcesRoute");
+const messageRoute = require("./routes/messagesRoute");
 const cookieParser = require("cookie-parser");
 const globalErrorHandler = require("./middleware/errorMiddleware");
 const rateLimit = require("express-rate-limit");
@@ -14,7 +16,7 @@ const hpp = require("hpp");
 const app = express();
 
 const limiter = rateLimit({
-  max: 1,
+  max: 100,
   windowMs: 60 * 60 * 1000,
   message: "Request limit per IP exceeded, please try again in one hour",
 });
@@ -50,6 +52,8 @@ app.use(function (req, res, next) {
 //ROUTE
 app.use("/api/v1/users", userRoute);
 app.use("/api/v1/mentorships", mentorshipRoute);
+app.use("/api/v1/resources", resourceRoute);
+app.use("/api/v1/messages", messageRoute);
 
 app.all("*", (req, res, next) => {
   res.status(404).json({

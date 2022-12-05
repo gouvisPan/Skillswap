@@ -1,0 +1,58 @@
+button {
+  font-size: 18px;
+  padding: 0.4rem 0.6rem;
+  font-weight: 600;
+  color: white;
+  border: 0px;
+  border-radius: 5px;
+}
+
+body {
+  margin: 0;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "Poppins", sans-serif;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+.page {
+  margin-top: 4rem;
+}
+
+.c {
+  margin: 6rem 12rem 0rem 12rem;
+}
+
+.delete-account-container {
+  margin-left: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.delete-account-container input,
+.delete-account-container select {
+  height: 2rem;
+  width: 60%;
+}
+.delete-account-container h2 {
+  color: #495057;
+  font-size: 14px;
+}
+.delete-account-container h3 {
+  margin: 0;
+}
+.delete-account-container button {
+  background-color: brown;
+  margin-top: 1rem;
+}
+.delete-account-container button:hover {
+  cursor: pointer;
+  filter: brightness(90%);
+}
+.delete-account-container button:active {
+  filter: brightness(80%);
+}/*# sourceMappingURL=DeleteAccount.css.map */

@@ -43,6 +43,12 @@ const userSchema = new mongoose.Schema(
       default: true,
       select: false,
     },
+    mentorships: [
+      {
+        type: mongoose.Schema.ObjectId,
+        ref: "Mentorship",
+      },
+    ],
   },
   { timestamps: true }
 );
@@ -57,6 +63,10 @@ userSchema.pre("save", async function (next) {
 
 userSchema.pre(/^find/, function (next) {
   this.find({ active: true });
+  next();
+});
+userSchema.pre(/^find/, function (next) {
+  this.populate("mentorships");
   next();
 });
 

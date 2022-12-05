@@ -34,7 +34,9 @@ exports.getUserMentorships = asyncHandler(async (req, res, next) => {
 });
 
 exports.getMentorship = asyncHandler(async (req, res, next) => {
-  const mentorship = await Mentorship.findById(req.params.id);
+  const mentorship = await Mentorship.findById(req.params.id).populate(
+    "messages"
+  );
 
   if (!mentorship) return next(new AppError("No mentorship by this ID found!"));
 

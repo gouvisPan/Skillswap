@@ -1,5 +1,7 @@
 const express = require("express");
 const mentorshipController = require("../controllers/mentorshipsController");
+const messageController = require("../controllers/messageController");
+const resourceController = require("../controllers/resourceController");
 const authController = require("../controllers/authController");
 const router = express.Router();
 
@@ -17,4 +19,7 @@ router
   .patch(mentorshipController.updateMentorship)
   .delete(mentorshipController.deleteMentorship);
 
+router
+  .route(":/mentorshipId/messages")
+  .post(authController.protect, messageController.create);
 module.exports = router;

@@ -37,7 +37,13 @@ exports.updateMe = asyncHandler(async (req, res, next) => {
   if (req.body.password)
     return next(new AppError("This route can't be used for PW uppdate"), 400);
 
-  const filteredBody = filterObj(req.body, "email", "name");
+  const filteredBody = filterObj(
+    req.body,
+    "email",
+    "name",
+    "photo",
+    "mentorships"
+  );
 
   const updatedUser = await User.findByIdAndUpdate(req.user.id, filteredBody, {
     new: true,

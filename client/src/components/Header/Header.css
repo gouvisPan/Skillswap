@@ -1,0 +1,61 @@
+button {
+  font-size: 18px;
+  padding: 0.4rem 0.6rem;
+  font-weight: 600;
+  color: white;
+  border: 0px;
+  border-radius: 5px;
+}
+
+body {
+  margin: 0;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "Poppins", sans-serif;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+.page {
+  margin-top: 4rem;
+}
+
+.c {
+  margin: 6rem 12rem 0rem 12rem;
+}
+
+.header-container {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  padding: 0.5rem 0;
+  height: 3rem;
+}
+.header-container img {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  height: 2rem;
+}
+
+.desktop-nav {
+  position: absolute;
+  top: 1.5rem;
+  right: 2rem;
+  display: flex;
+  gap: 1rem;
+}
+.desktop-nav a {
+  color: #212529;
+  text-decoration: none;
+}
+.desktop-nav a:hover {
+  color: white;
+}
+
+.logout:hover {
+  cursor: pointer;
+}/*# sourceMappingURL=Header.css.map */

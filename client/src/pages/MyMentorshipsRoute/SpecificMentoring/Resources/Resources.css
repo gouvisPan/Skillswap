@@ -1,0 +1,53 @@
+button {
+  font-size: 18px;
+  padding: 0.4rem 0.6rem;
+  font-weight: 600;
+  color: white;
+  border: 0px;
+  border-radius: 5px;
+}
+
+body {
+  margin: 0;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "Poppins", sans-serif;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+.page {
+  margin-top: 4rem;
+}
+
+.c {
+  margin: 6rem 12rem 0rem 12rem;
+}
+
+.resources__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+}
+.resource-item {
+  padding: 0.6rem 1rem;
+  box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.1);
+}
+.resource-item a {
+  text-decoration: none;
+  color: #343a40;
+}
+.resource-item h3 {
+  margin: 0.4rem;
+}
+.resource-item h2 {
+  margin: 0.4rem;
+  font-size: 20px;
+}
+.resource-item__relevants {
+  display: flex;
+  gap: 0.6rem;
+}/*# sourceMappingURL=Resources.css.map */

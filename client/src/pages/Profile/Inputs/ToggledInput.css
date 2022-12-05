@@ -1,0 +1,59 @@
+button {
+  font-size: 18px;
+  padding: 0.4rem 0.6rem;
+  font-weight: 600;
+  color: white;
+  border: 0px;
+  border-radius: 5px;
+}
+
+body {
+  margin: 0;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "Poppins", sans-serif;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+.page {
+  margin-top: 4rem;
+}
+
+.c {
+  margin: 6rem 12rem 0rem 12rem;
+}
+
+.toggle-container input {
+  border: 0px;
+  border-bottom: 1px solid #495057;
+  font-size: 18px;
+  -webkit-animation: slide-rotate 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+          animation: slide-rotate 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+.toggle-container span {
+  font-size: 18px;
+  -webkit-animation: slide-rotate 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) ease-in;
+          animation: slide-rotate 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) ease-in;
+}
+
+@-webkit-keyframes slide-rotate {
+  0%, 100% {
+    transform: translateY(0) rotateX(0deg);
+  }
+  50% {
+    transform: translateY(-15px) rotateX(-90deg);
+  }
+}
+
+@keyframes slide-rotate {
+  0%, 100% {
+    transform: translateY(0) rotateX(0deg);
+  }
+  50% {
+    transform: translateY(-15px) rotateX(-90deg);
+  }
+}/*# sourceMappingURL=ToggledInput.css.map */
