@@ -1,6 +1,7 @@
 import React from "react";
 import { ErrorMessage, useField } from "formik";
 import "./RegisterForm/RegisterForm.scss";
+
 const TextField: React.FC<{ name: string; pholder: string; type: string }> = (
   props
 ) => {

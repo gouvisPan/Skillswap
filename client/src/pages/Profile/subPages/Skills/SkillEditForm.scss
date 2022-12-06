@@ -1,11 +1,25 @@
 @import "../../../../sass/global";
 
-.single-skill{
-    display: flex;
-    flex-direction: column;
-    gap:.5rem;
-    padding: 0rem 2rem;    
-    &__content{
+.skillform {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0rem;
 
+  &__content {
+    width: 80%;
+    &--fields {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
     }
+  }
+}
+
+.vert {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
 }
