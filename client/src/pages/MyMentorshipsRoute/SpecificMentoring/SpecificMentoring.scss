@@ -64,12 +64,11 @@
     font-size: 10px;
     position: fixed;
     left: 12rem;
-    top: 4rem;
-    // transform: rotate(3deg);
+    top: 1.5rem;
 
     img {
-      width: 3rem;
-      transform: rotate(-120deg) translateX(0.8rem) translateY(-0.4rem);
+      width: 2.5rem;
+      transform: rotate(-120deg) translateX(0rem) translateY(-0.4rem);
       filter: contrast(60%);
     }
   }

@@ -1,6 +1,33 @@
 @import "../../sass/global";
 
 .menteeships {
+  box-shadow: 2px 2px 4px 1px rgb(0,0,0,0.2);
+  border-radius: 5px;
+  min-height: 60vh;
+
+  &__categories{
+    background-color: $color-primary-c-light;
+    padding: 0;
+    display: flex;
+    gap: 5rem;
+
+
+    span{
+      flex: 1 1 1;
+      padding: 1.5rem 1rem ;
+      border-right: 1px solid $color-grey-dark;
+      
+    }
+
+    span:hover{
+      cursor: pointer;
+    }
+
+    span:last-child{
+      border-right: 0px solid $color-grey-dark;
+    }
+  }
+
   &__no-skills {
     position: fixed;
     top: 10rem;

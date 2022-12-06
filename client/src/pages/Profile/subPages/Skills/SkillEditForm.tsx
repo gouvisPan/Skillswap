@@ -76,7 +76,7 @@ const SkillEditForm: React.FC<skillEditProps> = (props) => {
                 />
               </div>
             </div>
-            <button type="submit" className="submit-btn">
+            <button type="submit">
               Save
             </button>
           </Form>

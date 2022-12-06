@@ -11,7 +11,7 @@ const MyMenteeships = () => {
   const myMenteeships = useAppSelector(
     (state) => state.user.data!.myMenteeships
   );
-  const [currentCategory, setCurrentCategory] = useState(mySkills[0]);
+  const [currentCategory, setCurrentCategory] = useState(mySkills[0].name);
 
   return (
     <div className="menteeships c">
@@ -32,13 +32,13 @@ const MyMenteeships = () => {
             ))}
           </div>
           <div className="menteeships__list">
-            {/* {myMenteeships
+            {myMenteeships
           .filter(
             (menteeship: Menteeship) => menteeship.name === currentCategory
           )
           .map((menteeship: Menteeship) => (
-            // <MenteeItem menteeship={menteeship} />
-          ))} */}
+            <MenteeItem menteeship={menteeship} />
+          ))}
           </div>
         </Fragment>
       )}
