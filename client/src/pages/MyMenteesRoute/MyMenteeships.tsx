@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useAppSelector } from "../../hooks/hooks";
 import Menteeship from "../../model/Menteeship";
 import Skill from "../../model/Skill";
+import AddMentorships from "./AddMentorships";
 import MenteeItem from "./MenteeItem/MenteeItem";
 import "./MyMenteeships.scss";
 
@@ -13,22 +14,19 @@ const MyMenteeships = () => {
   );
   const [currentCategory, setCurrentCategory] = useState(mySkills[0].name);
 
+  const categoryClickHandler = (name: string) => {
+    setCurrentCategory(name)
+  }
+
   return (
     <div className="menteeships c">
-      {mySkills.length === 0 ? (
-        <div className="menteeships__no-skills">
-          <h1>Add some skills to let other people find you!</h1>
-          <p>
-            It looks like you have not added any skills yet. Click{" "}
-            <Link to="/profile">here</Link> to add some and start your Mentoring
-            journey!
-          </p>
-        </div>
-      ) : (
+      {mySkills.length === 0 ? 
+        <AddMentorships/>
+      : (
         <Fragment>
           <div className="menteeships__categories">
             {mySkills.map((s: Skill) => (
-              <span>{s.name}</span>
+              <span onClick = {() => categoryClickHandler(s.name)}>{s.name}</span>
             ))}
           </div>
           <div className="menteeships__list">

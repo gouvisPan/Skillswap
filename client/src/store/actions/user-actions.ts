@@ -8,6 +8,7 @@ export const loginDummyUser = createAsyncThunk(
   "dummyuser/login",
   async (_: void, thunkApi) => {
     try {
+      console.log(dummyUser1);
       return dummyUser1;
     } catch (error: any) {
       thunkApi.rejectWithValue(error.message);

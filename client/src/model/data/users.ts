@@ -61,9 +61,10 @@ const l3 = new Mentorship(user2, "English", 1, "", 50);
 // const l5 = new Mentorship(user2,"Personal Development", 1, "", 0);
 // const l6 = new Mentorship(user2,"Ux/Ui", 1.1, "", 0);
 
-const m1 = new Menteeship(user2, "Solidworks", 1.5, "", 20);
-const m2 = new Menteeship(user2, "Cooking", 1, "", 10);
-const m3 = new Menteeship(user2, "AutoCAD", 1.2, "", 80);
+const m1 = new Menteeship(user2, "Web Development", 1.5, "", 20);
+const m2 = new Menteeship(user2, "English", 1, "", 10);
+const m3 = new Menteeship(user2, "UX / UI", 1.2, "", 80);
+const m4 = new Menteeship(user2, "Web Development", 1.3, "", 80);
 
 l1.tasks.push(t1);
 l1.tasks.push(t2);
@@ -84,6 +85,7 @@ user1.addMentorship(l3);
 user1.addMenteeship(m1);
 user1.addMenteeship(m2);
 user1.addMenteeship(m3);
+user1.addMenteeship(m4);
 
 export const dummyUser1 = user1;
 export const dummyUser2 = user2;
