@@ -7,13 +7,14 @@ class Mentorship extends mShip {
   mentor: User;
 
   constructor(
+    id: string,
     mentor: User,
     lName: string,
     lPoints: number,
     lCoverImg: string,
     progress: number
   ) {
-    super(lName, lPoints, lCoverImg, progress);
+    super(id, lName, lPoints, lCoverImg, progress);
     this.mentor = mentor;
   }
 }

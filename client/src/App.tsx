@@ -7,17 +7,18 @@ import { useEffect } from "react";
 import { useAppDispatch } from "./hooks/hooks";
 import SpecificMentoring from "./pages/MyMentorshipsRoute/SpecificMentoring/SpecificMentoring";
 import Auth from "./pages/auth/Auth";
-import MyMentees from "./pages/MyMenteesRoute/MyMenteeships";
+import MyMentees from "./pages/MyMenteesRoute/MyMenteeships/MyMenteeships";
 import MyLearning from "./pages/MyMentorshipsRoute/MyMentorships/MyMentorships";
 import Layout from "./pages/Layout/Layout";
 import RequireAuth from "./pages/auth/RequireAuth";
 import { useAppSelector } from "./hooks/hooks";
 import { loginDummyUser } from "./store/actions/user-actions";
 import { logoutUser } from "./store/actions/user-actions";
+import SpecificMenteeship from "./pages/MyMenteesRoute/SpecificMenteeship/SpecificMenteeship";
 
 function App() {
   const user = useAppSelector((state) => state.user.data);
- 
+
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -43,6 +44,10 @@ function App() {
               element={<SpecificMentoring />}
             />
             <Route path="teaching" element={<MyMentees />} />
+            <Route
+              path="teaching/:teachingId"
+              element={<SpecificMenteeship />}
+            />
           </Route>
           {/*<---------------------------- USER ROUTE*/}
           <Route path="*" element={<Error />} />

@@ -7,13 +7,14 @@ class Menteeship extends mShip {
   mentee: User;
 
   constructor(
+    id: string,
     mentee: User,
     lName: string,
     lPoints: number,
     lCoverImg: string,
     progress: number
   ) {
-    super(lName, lPoints, lCoverImg, progress);
+    super(id, lName, lPoints, lCoverImg, progress);
     this.mentee = mentee;
   }
 }

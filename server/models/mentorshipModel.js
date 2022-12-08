@@ -38,7 +38,7 @@ mentorshipSchema.virtual("messages", {
 });
 
 mentorshipSchema.pre(/^find/, async function () {
-  this.populate("resources");
+  this.populate("resources").populate("messages");
 });
 
 const Mentorship = mongoose.model("Mentorship", mentorshipSchema);

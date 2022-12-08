@@ -1,6 +1,5 @@
 import Menteeship from "./Menteeship";
 import Mentorship from "./Mentorship";
-import Learning from "./Mentorship";
 import Skill from "./Skill";
 
 class User {
@@ -26,8 +25,8 @@ class User {
     this.myMentorships = [];
     this.myMenteeships = [];
     this.mySkills = [];
-    this.slogan="";
-    this.bio="";
+    this.slogan = "";
+    this.bio = "";
   }
 
   addMentorship(m: Mentorship) {

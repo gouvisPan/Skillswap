@@ -1,12 +1,14 @@
 const express = require("express");
 const messageController = require("../controllers/messageController");
 const authController = require("../controllers/authController");
-const router = express.Router();
+
+const router = express.Router({ mergeParams: true });
 
 router
   .route("/")
-  .get(messageController.getAll)
-  .post(messageController.create)
-  .delete(messageController.delete);
+  .get(messageController.setMentorshipId, messageController.getAll)
+  .post(messageController.setMentorshipId, messageController.createMessage);
+
+router.route("/:id").delete(messageController.deleteMessage);
 
 module.exports = router;

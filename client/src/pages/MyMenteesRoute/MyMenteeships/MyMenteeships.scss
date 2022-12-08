@@ -1,31 +1,33 @@
-@import "../../sass/global";
+@import "../../../sass//global";
 
 .menteeships {
-  box-shadow: 2px 2px 4px 1px rgb(0,0,0,0.2);
-  border-radius: 5px;
-  min-height: 60vh;
+  box-shadow: 2px 2px 4px 1px rgb(0, 0, 0, 0.2);
+  border-radius: 5px 5px 1rem 1rem;
+  min-height: 65vh;
 
-  &__categories{
+  &__categories {
     background-color: $color-primary-c-light;
     padding: 0;
     display: flex;
-    gap: 5rem;
 
-
-    span{
+    span {
+      text-align: center;
       flex: 1 1 1;
-      padding: 1.5rem 1rem ;
+      width: 100%;
+      padding: 1.5rem 1rem;
       border-right: 1px solid $color-grey-dark;
-      
     }
 
-    span:hover{
+    span:hover {
       cursor: pointer;
     }
 
-    span:last-child{
+    span:last-child {
       border-right: 0px solid $color-grey-dark;
     }
+  }
+  &__list {
+    margin: 1rem;
   }
 
   &__no-skills {
@@ -40,4 +42,8 @@
       align-self: center;
     }
   }
+}
+
+.a {
+  font-weight: 800;
 }
