@@ -1,5 +1,5 @@
 import React from "react";
-import Resource from "../../../../model/Resource";
+import Resource from "../../../model/Resource";
 import "./Resources.scss";
 
 const ResourceItem: React.FC<{ resource: Resource }> = (props) => {

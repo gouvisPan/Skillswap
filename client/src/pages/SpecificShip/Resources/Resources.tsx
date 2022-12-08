@@ -1,8 +1,12 @@
 import React from "react";
-import Resource from "../../../../model/Resource";
+import Resource from "../../../model/Resource";
 import ResourceItem from "./ResourceItem";
 
-const Resources: React.FC<{ resources: Resource[] }> = (props) => {
+interface ResourceProps {
+  resources: Resource[];
+  mentorship: Boolean;
+}
+const Resources: React.FC<ResourceProps> = (props) => {
   return (
     <div className="resources">
       <h1>Learning Resources</h1>

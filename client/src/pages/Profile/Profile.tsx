@@ -4,7 +4,6 @@ import placeholder from "../../assets/images/profile-image-placeholde.png";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
 import { useState } from "react";
 import BasicInfo from "./subPages/BasicInfo";
-import Photo from "./subPages/Photo";
 import Skills from "./subPages/Skills/Skills";
 import AccountSecurity from "./subPages/AccountSecurity";
 import DeleteAccount from "./subPages/DeleteAccount";
@@ -18,18 +17,15 @@ const Profile = () => {
 
   switch (mountedPage) {
     case 0:
-      mountedJsx = <BasicInfo/>;
+      mountedJsx = <BasicInfo />;
       break;
     case 1:
-      mountedJsx = <Photo />;
-      break;
-    case 2:
       mountedJsx = <Skills />;
       break;
-    case 3:
+    case 2:
       mountedJsx = <AccountSecurity />;
       break;
-    case 4:
+    case 3:
       mountedJsx = <DeleteAccount />;
   }
 
@@ -57,23 +53,17 @@ const Profile = () => {
           className={mountedPage === 1 ? "profile-container__active" : ""}
           onClick={() => setMountedPage(1)}
         >
-          Photo
+          Skills
         </li>
         <li
           className={mountedPage === 2 ? "profile-container__active" : ""}
           onClick={() => setMountedPage(2)}
         >
-          Skills
+          Account security
         </li>
         <li
           className={mountedPage === 3 ? "profile-container__active" : ""}
           onClick={() => setMountedPage(3)}
-        >
-          Account security
-        </li>
-        <li
-          className={mountedPage === 4 ? "profile-container__active" : ""}
-          onClick={() => setMountedPage(4)}
         >
           Delete Account
         </li>

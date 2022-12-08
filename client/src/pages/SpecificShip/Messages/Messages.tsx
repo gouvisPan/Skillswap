@@ -1,6 +1,6 @@
 import React from "react";
 
-const Messages = () => {
+const Messages: React.FC<{ mentorship: Boolean }> = (props) => {
   return <div>Messages</div>;
 };
 

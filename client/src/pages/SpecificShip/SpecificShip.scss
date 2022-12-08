@@ -1,7 +1,10 @@
-@import "../../../sass/global";
+@import "../../sass/global";
 
-.specific-mentoring-container {
+.specific-ship-container {
   margin-top: 8rem;
+  box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.1);
+  min-height: 70vh;
+
   &__header {
     display: flex;
     align-items: center;

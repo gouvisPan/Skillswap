@@ -1,9 +1,13 @@
 import React from "react";
-import Task from "../../../../model/Task";
+import Task from "../../../model/Task";
 import TaskItem from "./TaskItem";
 import "./Tasks.scss";
 
-const Tasks: React.FC<{ tasks: Task[] }> = (props) => {
+interface TasksProps {
+  tasks: Task[];
+  mentorship: Boolean;
+}
+const Tasks: React.FC<TasksProps> = (props) => {
   console.log(props.tasks);
 
   return (

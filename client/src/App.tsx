@@ -5,16 +5,15 @@ import Error from "./pages/Error/Error";
 import Header from "./components/Header/Header";
 import { useEffect } from "react";
 import { useAppDispatch } from "./hooks/hooks";
-import SpecificMentoring from "./pages/MyMentorshipsRoute/SpecificMentoring/SpecificMentoring";
 import Auth from "./pages/auth/Auth";
 import MyMentees from "./pages/MyMenteesRoute/MyMenteeships/MyMenteeships";
-import MyLearning from "./pages/MyMentorshipsRoute/MyMentorships/MyMentorships";
+import MyMentorships from "./pages/MyMentorshipsRoute/MyMentorships/MyMentorships";
 import Layout from "./pages/Layout/Layout";
 import RequireAuth from "./pages/auth/RequireAuth";
 import { useAppSelector } from "./hooks/hooks";
 import { loginDummyUser } from "./store/actions/user-actions";
 import { logoutUser } from "./store/actions/user-actions";
-import SpecificMenteeship from "./pages/MyMenteesRoute/SpecificMenteeship/SpecificMenteeship";
+import SpecificShip from "./pages/SpecificShip/SpecificShip";
 
 function App() {
   const user = useAppSelector((state) => state.user.data);
@@ -28,7 +27,6 @@ function App() {
 
   return (
     <Router>
-      <Header />
       <Routes>
         <Route path="/" element={<Layout />}>
           {/* PUBLIC ROUTE ---------------------------->*/}
@@ -38,15 +36,15 @@ function App() {
           <Route element={<RequireAuth />}>
             <Route path="home" element={<Home />} />
             <Route path="profile" element={<Profile />} />
-            <Route path="learning" element={<MyLearning />} />
+            <Route path="learning" element={<MyMentorships />} />
             <Route
-              path="learning/:learningId"
-              element={<SpecificMentoring />}
+              path="learning/:mentId"
+              element={<SpecificShip mentorship={true} />}
             />
             <Route path="teaching" element={<MyMentees />} />
             <Route
-              path="teaching/:teachingId"
-              element={<SpecificMenteeship />}
+              path="teaching/:mentId"
+              element={<SpecificShip mentorship={false} />}
             />
           </Route>
           {/*<---------------------------- USER ROUTE*/}

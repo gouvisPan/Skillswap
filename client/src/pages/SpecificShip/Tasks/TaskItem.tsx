@@ -1,6 +1,6 @@
 import { taskCancelled } from "@reduxjs/toolkit/dist/listenerMiddleware/exceptions";
 import React, { useState } from "react";
-import Task from "../../../../model/Task";
+import Task from "../../../model/Task";
 import "./Tasks.scss";
 
 const TaskItem: React.FC<{ task: Task }> = (props) => {

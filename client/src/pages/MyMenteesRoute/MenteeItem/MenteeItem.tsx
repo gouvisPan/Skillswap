@@ -11,7 +11,7 @@ const MenteeItem: React.FC<{ menteeship: Menteeship }> = (props) => {
       className="item-container"
       style={{ width: `${progress}%`, minWidth: "20%" }}
     >
-      <h4>{props.menteeship.mentee.name}</h4>
+      <h4>{props.menteeship.ment.name}</h4>
     </div>
   );
 };

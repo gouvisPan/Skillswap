@@ -3,16 +3,15 @@ import Learning from "../../../model/Mentorship";
 import MentorshipCard from "../MentorshipCard/MentorshipCard";
 import { useAppSelector } from "../../../hooks/hooks";
 import { Link } from "react-router-dom";
-import { FaRegQuestionCircle } from "react-icons/fa";
 import { Fragment } from "react";
 
-const MyLearning = () => {
+const MyMentorships = () => {
   const myLearnings = useAppSelector((state) => state.user.data!.myMentorships);
 
   const content =
     myLearnings.length === 0 ? (
       <Fragment>
-        <div className="my-learning-container__no-mentors">
+        <div className="my-mentorships-container__no-mentors">
           <h1>Pick a Mentor!</h1>
           <p>
             It looks like you dont have any mentorships yet. Click{" "}
@@ -23,13 +22,15 @@ const MyLearning = () => {
       </Fragment>
     ) : (
       <Fragment>
-        <h1>My Mentors</h1>
-        <div className="my-learning-container__cards">
+        <div className="my-mentorships-container__header">
+          <h2>My Mentors</h2>
+        </div>
+        <div className="my-mentorships-container__cards">
           {myLearnings.map((learning: Learning) => {
             return (
               <Link
                 to={`${learning.id}`}
-                className="my-learning-container__cards--clean-a"
+                className="my-mentorships-container__cards--clean-a"
               >
                 <MentorshipCard learning={learning} />
               </Link>
@@ -39,7 +40,7 @@ const MyLearning = () => {
       </Fragment>
     );
 
-  return <div className="page my-learning-container">{content}</div>;
+  return <div className="c my-mentorships-container">{content}</div>;
 };
 
-export default MyLearning;
+export default MyMentorships;

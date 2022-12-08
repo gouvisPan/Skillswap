@@ -4,8 +4,6 @@ import Task from "./Task";
 import User from "./User";
 
 class Mentorship extends mShip {
-  mentor: User;
-
   constructor(
     id: string,
     mentor: User,
@@ -14,8 +12,7 @@ class Mentorship extends mShip {
     lCoverImg: string,
     progress: number
   ) {
-    super(id, lName, lPoints, lCoverImg, progress);
-    this.mentor = mentor;
+    super(id, mentor, lName, lPoints, lCoverImg, progress);
   }
 }
 
