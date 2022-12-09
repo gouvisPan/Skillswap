@@ -6,7 +6,7 @@ import { FaSignOutAlt } from "react-icons/fa";
 import "./Header.scss";
 import { logoutUser } from "../../store/actions/user-actions";
 import { useAppDispatch } from "../../hooks/hooks";
-import useScroll from "../../hooks/useScroll";
+import { useLocation } from "react-router-dom";
 
 interface NavProps {
   scrolled: Boolean;
@@ -14,7 +14,14 @@ interface NavProps {
 
 const Navbar: React.FC<NavProps> = (props) => {
   const dispatch = useAppDispatch();
-  const colorCss = props.scrolled ? "transparent" : "colored";
+  const { pathname } = useLocation();
+  const colorCss =
+    !pathname.includes("learning/") &&
+    !pathname.includes("teaching/") &&
+    props.scrolled
+      ? "colored"
+      : "colored";
+  // const colorCss = props.scrolled ? "transparent" : "colored";
 
   const handleSignOut = () => {
     dispatch(logoutUser());

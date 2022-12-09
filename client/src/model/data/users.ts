@@ -7,6 +7,7 @@ import Resource from "../Resource";
 import Mentorship from "../Mentorship";
 import Menteeship from "../Menteeship";
 import Skill from "../../model/Skill";
+import Message from "../Message";
 const user1 = new User("Sandy", "sandy@gmail.com", "sandy");
 const user2 = new User("Panagiotis", "panagiotis@gmail.com", "panagiotis");
 const user3 = new User("Jonathan Nab", "panagiotis@gmail.com", "panagiotis");
@@ -28,6 +29,62 @@ const t2 = new Task(
 );
 
 const t3 = new Task(
+  "3",
+  "Learn Basic JavaScript",
+  "I suggest to try a UDEMY course first becouse JS is complex and a structured learning expirience will" +
+    "help you alot.",
+  25,
+  30
+);
+const t4 = new Task(
+  "3",
+  "Learn Basic JavaScript",
+  "I suggest to try a UDEMY course first becouse JS is complex and a structured learning expirience will" +
+    "help you alot.",
+  25,
+  30
+);
+const t5 = new Task(
+  "3",
+  "Learn Basic JavaScript",
+  "I suggest to try a UDEMY course first becouse JS is complex and a structured learning expirience will" +
+    "help you alot.",
+  25,
+  30
+);
+const t6 = new Task(
+  "3",
+  "Learn Basic JavaScript",
+  "I suggest to try a UDEMY course first becouse JS is complex and a structured learning expirience will" +
+    "help you alot.",
+  25,
+  30
+);
+const t7 = new Task(
+  "3",
+  "Learn Basic JavaScript",
+  "I suggest to try a UDEMY course first becouse JS is complex and a structured learning expirience will" +
+    "help you alot.",
+  25,
+  30
+);
+const t8 = new Task(
+  "3",
+  "Learn Basic JavaScript",
+  "I suggest to try a UDEMY course first becouse JS is complex and a structured learning expirience will" +
+    "help you alot.",
+  25,
+  30
+);
+const t9 = new Task(
+  "3",
+  "Learn Basic JavaScript",
+  "I suggest to try a UDEMY course first becouse JS is complex and a structured learning expirience will" +
+    "help you alot.",
+  25,
+  30
+);
+const t10 = new Task(
   "3",
   "Learn Basic JavaScript",
   "I suggest to try a UDEMY course first becouse JS is complex and a structured learning expirience will" +
@@ -85,6 +142,12 @@ const m7 = new Menteeship("7", user4, "Web Development", 1.3, "", 80);
 l1.tasks.push(t1);
 l1.tasks.push(t2);
 l1.tasks.push(t3);
+l1.tasks.push(t4);
+l1.tasks.push(t5);
+l1.tasks.push(t6);
+l1.tasks.push(t7);
+l1.tasks.push(t8);
+l1.tasks.push(t9);
 l1.resources.push(r1, r2, r3);
 
 m1.tasks.push(t1);
@@ -105,6 +168,50 @@ user1.addMenteeship(m4);
 user1.addMenteeship(m5);
 user1.addMenteeship(m6);
 user1.addMenteeship(m7);
+
+const me1 = new Message(
+  "1",
+  "Thank you for entering my Mentorship program!",
+  true
+);
+const me2 = new Message(
+  "2",
+  "Nice to meet you! Let's make a video call to meet each other",
+  false
+);
+const me3 = new Message(
+  "3",
+  "Yeap, we can schedule a call in the upcoming days",
+  true
+);
+const me4 = new Message(
+  "4",
+  "I am flexible, therefore we can make the call whenever you prefer",
+  false
+);
+
+const me5 = new Message(
+  "5",
+  "Nice to meet you! Let's make a video call to meet each other",
+  false
+);
+const me6 = new Message(
+  "6",
+  "Yeap, we can schedule a call in the upcoming days",
+  true
+);
+const me7 = new Message(
+  "5",
+  "Nice to meet you! Let's make a video call to meet each other,Nice to meet you! Let's make a video call to meet each other",
+  false
+);
+const me8 = new Message(
+  "6",
+  "Yeap, we can schedule a call in the upcoming days. Thank you for entering my Mentorship program!",
+  true
+);
+
+export const conversation = [me1, me2, me3, me4, me5, me6, me7, me8];
 
 export const dummyUser1 = user1;
 export const dummyUser2 = user2;

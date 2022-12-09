@@ -1,9 +1,8 @@
 @import "../../sass/global";
 
 .specific-ship-container {
-  margin-top: 8rem;
+  margin-top: 0;
   box-shadow: 2px 2px 4px 1px rgba(0, 0, 0, 0.1);
-  min-height: 70vh;
 
   &__header {
     display: flex;
@@ -60,7 +59,8 @@
   }
 
   &__content {
-    padding-top: 2rem;
+    height: 90vh;
+    overflow-y: scroll;
   }
 
   h4 {

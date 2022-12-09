@@ -1,0 +1,61 @@
+@import "../../../../sass/global";
+
+.message-container {
+  position: relative;
+  padding: 0.5rem 1rem;
+  max-width: 20vw;
+  font-size: 18px;
+}
+
+.mentor {
+  background-color: $color-primary-lighter;
+  align-self: flex-end;
+  border-radius: 1rem 1rem 0 1rem;
+  margin-right: 1rem;
+
+  &__read {
+    border-radius: 2rem;
+    font-size: 15px;
+    background-color: $color-primary;
+    position: absolute;
+    bottom: 0;
+    left: -1.5rem;
+  }
+
+  &__time {
+    font-size: 14px;
+    position: absolute;
+    bottom: 0;
+    left: -10rem;
+  }
+}
+
+.mentee {
+  background-color: $color-primary-c-light;
+  align-self: flex-start;
+  border-radius: 1rem 1rem 1rem 0;
+  margin-left: 1rem;
+
+  &__read {
+    font-size: 15px;
+    border-radius: 2rem;
+    background-color: $color-primary-c;
+    position: absolute;
+    bottom: 0;
+    right: -1.5rem;
+  }
+
+  &__time {
+    font-size: 14px;
+    position: absolute;
+    bottom: 0;
+    right: -10rem;
+  }
+}
+
+.message-container:first-child {
+  margin-top: 2rem;
+}
+.message-container:last-child {
+  margin-bottom: 6rem;
+}

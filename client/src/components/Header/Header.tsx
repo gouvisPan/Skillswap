@@ -2,21 +2,22 @@ import React from "react";
 import Navbar from "./Navbar";
 import logo from "./../../assets/images/logo-no-bg.png";
 import logoW from "./../../assets/images/logo-w.png";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import useScroll from "../../hooks/useScroll";
 
 const Header = () => {
   const scrollPosition = useScroll();
-  const headerCss =
-    scrollPosition > 20 ? "header-container trans" : "header-container";
-  const navLogo = scrollPosition > 20 ? logo : logoW;
+  const { pathname } = useLocation();
+  const expression =
+    pathname.includes("learning/") || pathname.includes("teaching/");
+  const headerCss = expression ? "header-container trans" : "header-container";
 
   return (
     <div className={headerCss}>
       <NavLink to="home">
-        <img src={navLogo} alt="logo"></img>
+        {!expression && <img src={logoW} alt="logo"></img>}
       </NavLink>
-      <Navbar scrolled={scrollPosition > 20} />
+      <Navbar scrolled={scrollPosition > 12} />
     </div>
   );
 };

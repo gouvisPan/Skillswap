@@ -39,7 +39,7 @@ const SpecificShip: React.FC<{ mentorship: Boolean }> = (props) => {
   }
 
   return (
-    <div className="specific-ship-container c">
+    <div className="specific-ship-container">
       <div className="specific-ship-container__header">
         <div className="specific-ship-container__header--mentor">
           <div className="specific-ship-container__header--mentor__inline">
@@ -55,7 +55,7 @@ const SpecificShip: React.FC<{ mentorship: Boolean }> = (props) => {
               setMountedPage(0);
             }}
           >
-            Messeges
+            Messages
           </li>
           <li
             onClick={() => {

@@ -8,8 +8,6 @@ interface TasksProps {
   mentorship: Boolean;
 }
 const Tasks: React.FC<TasksProps> = (props) => {
-  console.log(props.tasks);
-
   return (
     <div className="tasks-container">
       {props.tasks.map((t) => (

@@ -2,7 +2,8 @@
 
 .profile-container {
   box-shadow: 2px 2px 5px 2px rgba($color: #000000, $alpha: 0.1);
-  display: grid;
+  display: flex;
+  flex-direction: row;
   grid-template-columns: 1fr 5fr;
 
   &__basic-info {
@@ -10,7 +11,6 @@
     display: flex;
     flex-direction: column;
     padding: 2rem;
-    width: 10rem;
     height: 10rem;
     align-items: flex-start;
     justify-content: center;
@@ -24,6 +24,28 @@
       font-size: $font-size-ml;
       color: white;
       align-self: center;
+    }
+  }
+  &__list {
+    width: 100%;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    padding: 0.3rem 0 0 0;
+    border-top: 1px solid $color-primary-c-light;
+    background-color: $color-primary-c-light;
+    margin: -0.3rem 0 0 0;
+
+    li {
+      font-weight: 500;
+      padding: 0.5rem 1.5rem;
+      &:hover {
+        cursor: pointer;
+        color: white;
+        background-color: $color-primary-light;
+        transition: 0.3s ease-in-out;
+      }
     }
   }
 
@@ -48,28 +70,6 @@
     }
   }
 
-  &__list {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    list-style: none;
-    padding: 0.3rem 0 0 0;
-    border-top: 1px solid $color-primary-c-light;
-    background-color: $color-primary-c-light;
-    margin: -0.3rem 0;
-
-    li {
-      font-weight: 500;
-      padding: 0.5rem 1.5rem;
-      &:hover {
-        cursor: pointer;
-        color: white;
-        background-color: $color-primary-light;
-        transition: 0.3s ease-in-out;
-      }
-    }
-  }
   &__active {
     border-left: 10px solid $color-primary-light;
     // border-top: 2px solid $color-primary;
@@ -82,10 +82,17 @@
   }
 
   &__page {
+    height: 90vh;
+    overflow-y: scroll;
     margin-bottom: 10rem;
   }
 }
-
+.left {
+  width: 17vw;
+}
+.right {
+  width: 83vw;
+}
 // &__secondary-info {
 //     position: relative;
 //     margin: 1rem 0;

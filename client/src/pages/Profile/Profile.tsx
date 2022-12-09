@@ -31,44 +31,48 @@ const Profile = () => {
 
   return (
     <div className="profile-container c">
-      <div className="profile-container__basic-info">
-        <img src={placeholder} />
-        <h3>{user?.name}</h3>
+      <div className="left">
+        <div className="profile-container__basic-info">
+          <img src={placeholder} />
+          <h3>{user?.name}</h3>
+        </div>
+        <ul className="profile-container__list">
+          <li
+            className={mountedPage === 0 ? "profile-container__active" : ""}
+            onClick={() => {
+              setMountedPage(0);
+            }}
+          >
+            Basic info
+          </li>
+          <li
+            className={mountedPage === 1 ? "profile-container__active" : ""}
+            onClick={() => setMountedPage(1)}
+          >
+            Skills
+          </li>
+          <li
+            className={mountedPage === 2 ? "profile-container__active" : ""}
+            onClick={() => setMountedPage(2)}
+          >
+            Account security
+          </li>
+          <li
+            className={mountedPage === 3 ? "profile-container__active" : ""}
+            onClick={() => setMountedPage(3)}
+          >
+            Delete Account
+          </li>
+        </ul>
       </div>
-      <div className="profile-container__title">
-        <h2>Profile Info</h2>
-        <h4>Edit your profile here!</h4>
-        <hr></hr>
+      <div className="right">
+        <div className="profile-container__title">
+          <h2>Profile Info</h2>
+          <h4>Edit your profile here!</h4>
+          <hr></hr>
+        </div>
+        <div className="profile-container__page">{mountedJsx}</div>
       </div>
-      <ul className="profile-container__list">
-        <li
-          className={mountedPage === 0 ? "profile-container__active" : ""}
-          onClick={() => {
-            setMountedPage(0);
-          }}
-        >
-          Basic info
-        </li>
-        <li
-          className={mountedPage === 1 ? "profile-container__active" : ""}
-          onClick={() => setMountedPage(1)}
-        >
-          Skills
-        </li>
-        <li
-          className={mountedPage === 2 ? "profile-container__active" : ""}
-          onClick={() => setMountedPage(2)}
-        >
-          Account security
-        </li>
-        <li
-          className={mountedPage === 3 ? "profile-container__active" : ""}
-          onClick={() => setMountedPage(3)}
-        >
-          Delete Account
-        </li>
-      </ul>
-      <div className="profile-container__page">{mountedJsx}</div>
     </div>
   );
 };
