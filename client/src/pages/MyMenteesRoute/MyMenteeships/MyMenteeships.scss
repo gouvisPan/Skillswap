@@ -28,6 +28,14 @@
   }
   &__list {
     margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    
+    a{
+      width:60%;
+      text-decoration: none;
+      color: $color-grey-black;
+    }
   }
 
   &__no-skills {

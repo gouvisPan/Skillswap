@@ -34,6 +34,7 @@ function App() {
           {/*<---------------------------- PUBLIC ROUTE */}
           {/* USER ROUTE ---------------------------->*/}
           <Route element={<RequireAuth />}>
+            <Route path="" element={<Home />} />
             <Route path="home" element={<Home />} />
             <Route path="profile" element={<Profile />} />
             <Route path="learning" element={<MyMentorships />} />

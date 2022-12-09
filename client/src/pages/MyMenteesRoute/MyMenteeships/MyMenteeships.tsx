@@ -41,7 +41,7 @@ const MyMenteeships = () => {
                 (menteeship: Menteeship) => menteeship.name === currentCategory
               )
               .map((menteeship: Menteeship) => (
-                <Link to={`${menteeship.id}`}>
+                <Link to={`${menteeship.id}`} >
                   <MenteeItem menteeship={menteeship} />
                 </Link>
               ))}
