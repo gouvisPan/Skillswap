@@ -28,7 +28,7 @@
   }
   &__list {
     width: 100%;
-    min-height: 80vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     list-style: none;
@@ -82,8 +82,6 @@
   }
 
   &__page {
-    height: 90vh;
-    overflow-y: scroll;
     margin-bottom: 10rem;
   }
 }
