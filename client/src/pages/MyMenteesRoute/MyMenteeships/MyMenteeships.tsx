@@ -12,7 +12,9 @@ const MyMenteeships = () => {
   const myMenteeships = useAppSelector(
     (state) => state.user.data!.myMenteeships
   );
-  const [currentCategory, setCurrentCategory] = useState(mySkills[0].name);
+  const [currentCategory, setCurrentCategory] = useState(
+    mySkills ? mySkills[0].name : " "
+  );
   const [isActive, setIsActive] = useState(true);
 
   const categoryClickHandler = (name: string) => {
@@ -21,7 +23,7 @@ const MyMenteeships = () => {
 
   return (
     <div className="menteeships c">
-      {mySkills.length === 0 ? (
+      {!mySkills || mySkills.length === 0 ? (
         <AddMentorships />
       ) : (
         <Fragment>
@@ -41,7 +43,7 @@ const MyMenteeships = () => {
                 (menteeship: Menteeship) => menteeship.name === currentCategory
               )
               .map((menteeship: Menteeship) => (
-                <Link to={`${menteeship.id}`} >
+                <Link to={`${menteeship.id}`}>
                   <MenteeItem menteeship={menteeship} />
                 </Link>
               ))}

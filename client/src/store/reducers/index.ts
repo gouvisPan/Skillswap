@@ -6,7 +6,7 @@ import {
   PERSIST,
   PURGE,
   REGISTER,
-} from 'redux-persist'
+} from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { persistStore, persistCombineReducers } from "redux-persist";
 import userSlice from "./userSlice";
@@ -26,14 +26,13 @@ const persistedReducer = persistCombineReducers(persistConfig, userReducer);
 
 export const store = configureStore({
   reducer: persistedReducer,
-  middleware: getDefaultMiddleware =>
-  getDefaultMiddleware({
-    serializableCheck: {
-      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-      serializableCheck: false,
-    },
-    
-  }),
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+        serializableCheck: false,
+      },
+    }),
   devTools: process.env.NODE_ENV !== "production",
 });
 

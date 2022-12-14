@@ -49,6 +49,18 @@ const userSchema = new mongoose.Schema(
         ref: "Mentorship",
       },
     ],
+    menteeships: [
+      {
+        type: mongoose.Schema.ObjectId,
+        ref: "Mentorship",
+      },
+    ],
+    skills: [
+      {
+        type: mongoose.Schema.ObjectId,
+        ref: "Skill",
+      },
+    ],
   },
   { timestamps: true }
 );
@@ -66,7 +78,7 @@ userSchema.pre(/^find/, function (next) {
   next();
 });
 userSchema.pre(/^find/, function (next) {
-  this.populate("mentorships");
+  this.populate("mentorships").populate("menteeships");
   next();
 });
 

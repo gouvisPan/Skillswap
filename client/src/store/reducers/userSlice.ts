@@ -1,26 +1,32 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import User from "../../model/User";
-import { createUser, loginDummyUser, loginUser, logoutUser } from "../actions/user-actions";
-import {dummyUser1, dummyUser2} from "../../model/data/users"
+import {
+  createUser,
+  loginDummyUser,
+  loginUser,
+  logoutUser,
+  updateUser,
+} from "../actions/user-actions";
+import { dummyUser1, dummyUser2 } from "../../model/data/users";
 
 interface userSliceState {
   isLoading: boolean;
   isSuccess: boolean;
   isAuthenticated: boolean;
   error: null | string;
+  token: string;
   data: null | User;
 }
 let user: User = JSON.parse(localStorage.getItem("user") || "{}");
-
-
 
 const initialState: userSliceState = {
   isLoading: false,
   isSuccess: false,
   isAuthenticated: false,
   error: null,
-  data: dummyUser1
-  // data: user ? user : null,
+  token: "",
+  // data: dummyUser1
+  data: user ? user : null,
 };
 
 const userSlice = createSlice({
@@ -36,7 +42,8 @@ const userSlice = createSlice({
         state.isLoading = false;
         state.isSuccess = true;
         state.isAuthenticated = true;
-        state.data = action.payload;
+        state.data = action.payload.data.user;
+        state.token = action.payload.data.token;
       })
       .addCase(loginUser.rejected, (state, action: PayloadAction<any>) => {
         state.isLoading = false;
@@ -48,7 +55,7 @@ const userSlice = createSlice({
       .addCase(createUser.fulfilled, (state, action: PayloadAction<any>) => {
         state.isLoading = false;
         state.isAuthenticated = true;
-        state.data = action.payload;
+        state.data = action.payload.data.user;
       })
       .addCase(createUser.rejected, (state, action: PayloadAction<any>) => {
         state.isLoading = false;
@@ -69,8 +76,24 @@ const userSlice = createSlice({
         state.error = action.payload;
         state.data = null;
       })
-      .addCase(loginDummyUser.fulfilled, (state, action: PayloadAction<any>) =>{
-        state.data = action.payload;
+      .addCase(
+        loginDummyUser.fulfilled,
+        (state, action: PayloadAction<any>) => {
+          state.data = action.payload;
+        }
+      )
+      .addCase(updateUser.pending, (state) => {
+        state.isLoading = false;
+      })
+      .addCase(updateUser.fulfilled, (state, action: PayloadAction<any>) => {
+        state.isLoading = false;
+        state.isAuthenticated = true;
+        state.data = action.payload.data.user;
+      })
+      .addCase(updateUser.rejected, (state, action: PayloadAction<any>) => {
+        state.isLoading = false;
+        state.error = action.payload;
+        state.data = null;
       });
   },
 });

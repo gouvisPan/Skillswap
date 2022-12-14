@@ -11,7 +11,7 @@ const SpecificShip: React.FC<{ mentorship: Boolean }> = (props) => {
   const [mountedPage, setMountedPage] = useState(0);
   const myShips: mShip[] = useAppSelector((state) =>
     props.mentorship
-      ? state.user.data!.myMentorships
+      ? state.user.data!.mentorships
       : state.user.data!.myMenteeships
   );
   let { mentId } = useParams();

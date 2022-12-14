@@ -11,7 +11,7 @@ class User {
   photo: string;
   slogan: string;
   bio: string;
-  myMentorships: Mentorship[];
+  mentorships: Mentorship[];
   myMenteeships: Menteeship[];
   mySkills: Skill[];
 
@@ -22,7 +22,7 @@ class User {
     this.id = new Date().toISOString();
     this.sp = 0;
     this.photo = "";
-    this.myMentorships = [];
+    this.mentorships = [];
     this.myMenteeships = [];
     this.mySkills = [];
     this.slogan = "";
@@ -30,7 +30,7 @@ class User {
   }
 
   addMentorship(m: Mentorship) {
-    this.myMentorships.push(m);
+    this.mentorships.push(m);
   }
   addMenteeship(m: Menteeship) {
     this.myMenteeships.push(m);

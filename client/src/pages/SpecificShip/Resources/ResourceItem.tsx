@@ -9,11 +9,6 @@ const ResourceItem: React.FC<{ resource: Resource }> = (props) => {
       <a href={props.resource.link} target="blank">
         <h2>{props.resource.link}</h2>
       </a>
-      <div className="resource-item__relevants">
-        {props.resource.useFor.map((str) => (
-          <span>{str}</span>
-        ))}
-      </div>
     </div>
   );
 };

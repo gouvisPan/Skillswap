@@ -2,8 +2,10 @@ import React from "react";
 import Learning from "../../../model/Mentorship";
 import "./MentorshipCard.scss";
 import progress from "../../../assets/images/in-progress-icon.png";
+
 const LessonCard: React.FC<{ learning: Learning }> = (props) => {
   const learning: Learning = props.learning;
+  console.log(learning);
 
   return (
     <div className="lesson-card">

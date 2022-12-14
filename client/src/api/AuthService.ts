@@ -1,4 +1,5 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
+import { useAppSelector } from "../hooks/hooks";
 import ApiUser from "../model/ApiUser";
 import { NewUser } from "../model/auth/NewUser";
 import LoginCredentials from "../model/LoginCredentials";
@@ -9,28 +10,35 @@ const url = `/api/v1`;
 
 export const fetchUser = async (
   credentials: LoginCredentials
-): Promise<ApiUser | null> => {
-  const response = await axios.post<ApiUser>(`${url}/users/login`, credentials);
-  console.log(response);
-  if (response.data) {
-    localStorage.setItem("user", JSON.stringify(response.data));
-  }
-
-  return response.data;
+): Promise<AxiosResponse | null> => {
+  const response = await axios.post<ApiUser>(
+    `${url}/users/signin`,
+    credentials,
+    { withCredentials: true }
+  );
+  return response;
 };
 
-export const createUser = async (user: NewUser): Promise<ApiUser | null> => {
-  const response = await axios.post(`${url}/users/register`, user);
-
-  if (response.data) {
-    localStorage.setItem("user", JSON.stringify(response.data));
-  }
-
-  return response.data;
+export const createUser = async (
+  user: NewUser
+): Promise<AxiosResponse | null> => {
+  const response = await axios.post(`${url}/users/signup`, user, {
+    withCredentials: true,
+  });
+  return response;
 };
 
 export const logoutUser = async () => {
   const response = await axios.get(`${url}/users/logout`);
-  console.log(response);
-  return response.data;
+
+  return response;
+};
+
+export const updateUser = async (token: string, fieldsToUpdate: any) => {
+  const response = await axios.patch(`${url}/users/updateMe`, {
+    token,
+    fieldsToUpdate,
+  });
+
+  return response;
 };

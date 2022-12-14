@@ -6,10 +6,10 @@ import { Link } from "react-router-dom";
 import { Fragment } from "react";
 
 const MyMentorships = () => {
-  const myLearnings = useAppSelector((state) => state.user.data!.myMentorships);
+  const myLearnings = useAppSelector((state) => state.user.data!.mentorships);
 
   const content =
-    myLearnings.length === 0 ? (
+    myLearnings && myLearnings.length === 0 ? (
       <Fragment>
         <div className="my-mentorships-container__no-mentors">
           <h1>Pick a Mentor!</h1>

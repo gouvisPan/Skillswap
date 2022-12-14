@@ -11,19 +11,15 @@ import MyMentorships from "./pages/MyMentorshipsRoute/MyMentorships/MyMentorship
 import Layout from "./pages/Layout/Layout";
 import RequireAuth from "./pages/auth/RequireAuth";
 import { useAppSelector } from "./hooks/hooks";
-import { loginDummyUser } from "./store/actions/user-actions";
-import { logoutUser } from "./store/actions/user-actions";
 import SpecificShip from "./pages/SpecificShip/SpecificShip";
 
 function App() {
   const user = useAppSelector((state) => state.user.data);
-
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(loginDummyUser());
     console.log(user);
-  }, []);
+  }, [user]);
 
   return (
     <Router>

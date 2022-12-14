@@ -19,10 +19,10 @@ const Auth: React.FC = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (isAuthenticated || data) {
+    if (isAuthenticated && data) {
       navigate("/home");
     }
-  });
+  }, [isAuthenticated, data]);
 
   const signInHandler = () => {
     setwhiteCss(`register__left unmountWR`);

@@ -15,6 +15,10 @@ const mentorshipSchema = new mongoose.Schema(
       default:
         "https://res.cloudinary.com/dwuwvessm/image/upload/v1669462613/mentorship-default_gdynjs.png",
     },
+    ment: {
+      type: mongoose.Schema.ObjectId,
+      ref: "User",
+    },
     progress: {
       type: Number,
       default: 0,
@@ -26,7 +30,12 @@ const mentorshipSchema = new mongoose.Schema(
         ref: "Resource",
       },
     ],
-    tasks: [],
+    tasks: [
+      {
+        type: mongoose.Schema.ObjectId,
+        ref: "Task",
+      },
+    ],
   },
   { timestamps: true, toJSON: { virtuals: true }, toObject: { virtuals: true } }
 );
@@ -38,7 +47,10 @@ mentorshipSchema.virtual("messages", {
 });
 
 mentorshipSchema.pre(/^find/, async function () {
-  this.populate("resources").populate("messages");
+  this.populate("resources")
+    .populate("tasks")
+    .populate("messages")
+    .populate("ment", "name");
 });
 
 const Mentorship = mongoose.model("Mentorship", mentorshipSchema);

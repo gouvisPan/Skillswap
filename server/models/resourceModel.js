@@ -5,7 +5,7 @@ const resourceSchema = new mongoose.Schema({
     type: String,
     required: [true, "Please provide the resource hyperlink"],
   },
-  descriptiom: {
+  description: {
     type: String,
     default: "A usefull link",
   },

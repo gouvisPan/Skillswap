@@ -3,10 +3,7 @@ import * as Yup from "yup";
 import "./RegisterForm.scss";
 import TextField from "../TextField";
 import { createUser } from "../../../store/actions/user-actions";
-import { NewUser } from "../../../model//auth/NewUser";
 import { useAppDispatch } from "../../../hooks/hooks";
-import { useAppSelector } from "../../../hooks/hooks";
-import { useEffect } from "react";
 
 const RegisterForm = () => {
   const dispatch = useAppDispatch();

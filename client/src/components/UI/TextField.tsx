@@ -4,9 +4,10 @@ import "./TextField.scss";
 
 interface textFieldProps {
   name: string;
-  type: string;
-  value: string;
-  className: string;
+  type?: string;
+  value?: string;
+  className?: string;
+  pholder?: string;
   isLarge: Boolean;
 }
 
@@ -20,6 +21,7 @@ const TextField: React.FC<textFieldProps> = (props) => {
           {...field}
           {...props}
           value={props.value}
+          placeholder={props.pholder}
           className={props.className}
         />
       )}

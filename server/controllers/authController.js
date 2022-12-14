@@ -16,13 +16,14 @@ const generateToken = (id) => {
 const sendToken = (user, statusCode, res) => {
   const token = generateToken(user._id);
 
-  res.cookie("jwt", token, {
+  res.cookie("jwt_auth", token, {
     expires: new Date(
       Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
     ),
     secure: process.env.NODE_ENV === "development" ? false : true,
     httpOnly: true,
   });
+
   user.password = undefined;
   user.active = undefined;
 
@@ -129,8 +130,7 @@ exports.updatePassword = asyncHandler(async (req, res, next) => {
 
   sendToken(user, 200, res);
 });
-
-exports.updateUserData = asyncHandler(async (req, res, next) => {});
+exports.logout = asyncHandler(async (req, res, next) => {});
 
 exports.protect = asyncHandler(async (req, res, next) => {
   let token;
