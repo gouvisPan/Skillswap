@@ -3,7 +3,7 @@
 ## STILL IN DEVELOPMENT
 
 ## Description 
-A cross-mentoring platform that allows users to be concurently mentors and mentees in varius fields. The main concept of this web application is to let 
+A cross-mentoring platform that allows users to be concurrently mentors and mentees in varius fields. The main concept of this web application is to let 
 users exchange their skills for other skills. 
 
 ## Features
