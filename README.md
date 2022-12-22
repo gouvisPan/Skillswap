@@ -1,4 +1,4 @@
-# skillswap
+# SkillSwap
 
 ## STILL IN DEVELOPMENT
 
