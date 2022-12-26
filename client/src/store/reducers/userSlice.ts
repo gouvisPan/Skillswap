@@ -35,23 +35,7 @@ const initialState: userSliceState = {
 const userSlice = createSlice({
   name: "user",
   initialState,
-  reducers: {
-    setSkills(state, action) {
-      state.categories = action.payload;
-    },
-    setProducts(state, action) {
-      state.products = action.payload;
-    },
-    setActiveCategory(state, action) {
-      state.activeCategory = state.categories[action.payload];
-    },
-    addToCart(state, action) {
-      state.incomingItemId = action.payload;
-    },
-    setOrder(state, action) {
-      state.order = action.payload;
-    },
-  },
+  reducers: {},
   extraReducers(builder) {
     builder
       .addCase(loginUser.pending, (state) => {
