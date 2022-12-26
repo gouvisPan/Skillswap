@@ -48,7 +48,7 @@ mentorshipSchema.virtual("messages", {
 
 mentorshipSchema.pre(/^find/, async function () {
   this.populate("resources")
-    .populate("tasks")
+    // .populate("tasks")
     .populate("messages")
     .populate("ment", "name");
 });

@@ -13,12 +13,12 @@ const BasicInfo = () => {
 
   const validate = Yup.object({
     name: Yup.string().max(20).required("Name is required"),
-    slogan: Yup.string(),
-    bio: Yup.string(),
+    slogan: Yup.string().min(10),
+    bio: Yup.string().min(15),
   });
 
   const onSubmit = (name: string, slogan: string, bio: string) => {
-    dispatch(updateUser([name, slogan, bio]));
+    dispatch(updateUser({ name, slogan, bio }));
   };
 
   return (

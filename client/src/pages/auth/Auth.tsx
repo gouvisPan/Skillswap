@@ -59,7 +59,7 @@ const Auth: React.FC = () => {
       <h3>Or</h3>
       <div className="register__left--google">
         <FcGoogle className="register__left--google__icon" />
-        <span>Sing Up with google</span>
+        <span>Sign Up with google</span>
       </div>
     </Fragment>
   );

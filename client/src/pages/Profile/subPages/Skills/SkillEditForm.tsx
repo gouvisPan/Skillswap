@@ -5,50 +5,67 @@ import * as Yup from "yup";
 import TextField from "../../../../components/UI/TextField";
 import { useRef, useState } from "react";
 import { Form, Formik } from "formik";
+import { useAppDispatch } from "../../../../hooks/hooks";
 
 interface skillEditProps {
-  skill: Skill;
+  skill: Skill | undefined;
 }
 
 const SkillEditForm: React.FC<skillEditProps> = (props) => {
+  const dispatch = useAppDispatch();
+
   const validate = Yup.object({
-    subject: Yup.string()
-      .max(45, "Must be up to 45 characters")
-      .required("Subject is required"),
-    name: Yup.string()
-      .max(25, "Must be up to 25 characters")
-      .required("Name is required"),
+    name: Yup.string().required("Please enter a name"),
+    desc: Yup.string()
+      .min(15, "Must be up to 15 characters")
+      .required("Please enter a description"),
+    experienceDesc: Yup.string(),
+    experienceYears: Yup.string(),
   });
+
+  const onSubmit = (
+    name: string,
+    desc: string,
+    experienceDesc: string,
+    experienceYears: string
+  ) => {
+    // props.skill ? dispatch((name , desc, experienceDesc, experienceYears));
+  };
 
   return (
     <Formik
       initialValues={{
-        name: "",
-        email: "",
-        subject: "",
-        message: "",
+        name: props.skill?.name || "",
+        desc: props.skill?.desc || "",
+        experienceDesc: props.skill?.experience.info || "",
+        experienceYears: props.skill?.experience.years.toString() || "",
       }}
       validationSchema={validate}
-      onSubmit={(values, { resetForm }) => {
-        console.log(values);
+      onSubmit={(values) => {
+        onSubmit(
+          values.name,
+          values.desc,
+          values.experienceDesc,
+          values.experienceYears
+        );
       }}
     >
       {(formik) => (
         <div className="skillform">
           <Form className="skillform__content">
-            <h3>Content</h3>
+            <h3>Description</h3>
             <div className="skillform__content--fields">
               <TextField
-                name={props.skill.name}
+                name="name"
                 type="text"
-                value={props.skill.name}
+                pholder={props.skill?.name || "Skill Name"}
                 className=" "
                 isLarge={false}
               />
               <TextField
-                name={props.skill.desc}
+                name="desc"
                 type="text"
-                value={props.skill.desc}
+                pholder={props.skill?.desc || "Skill Description"}
                 className=" "
                 isLarge={true}
               />
@@ -58,9 +75,11 @@ const SkillEditForm: React.FC<skillEditProps> = (props) => {
               <div className="vert">
                 <span>Type: </span>
                 <TextField
-                  name={props.skill.experience.info}
+                  name="experienceDesc"
                   type="text"
-                  value={props.skill.experience.info}
+                  pholder={
+                    props.skill?.experience.info || "Experience description"
+                  }
                   className=" "
                   isLarge={false}
                 />
@@ -68,17 +87,18 @@ const SkillEditForm: React.FC<skillEditProps> = (props) => {
               <div className="vert">
                 <span>Years: </span>
                 <TextField
-                  name={props.skill.experience.info}
+                  name="experienceYears"
                   type="text"
-                  value={props.skill.experience.years.toString()}
+                  pholder={
+                    props.skill?.experience.years.toString() ||
+                    "Years of experience"
+                  }
                   className=" "
                   isLarge={false}
                 />
               </div>
             </div>
-            <button type="submit">
-              Save
-            </button>
+            <button type="submit">Save</button>
           </Form>
         </div>
       )}

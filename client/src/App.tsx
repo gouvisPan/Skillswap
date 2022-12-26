@@ -14,7 +14,7 @@ import { useAppSelector } from "./hooks/hooks";
 import SpecificShip from "./pages/SpecificShip/SpecificShip";
 
 function App() {
-  const user = useAppSelector((state) => state.user.data);
+  const user = useAppSelector((state) => state.user);
   const dispatch = useAppDispatch();
 
   useEffect(() => {

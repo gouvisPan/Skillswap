@@ -39,6 +39,8 @@ exports.updateMe = asyncHandler(async (req, res, next) => {
     req.body,
     "email",
     "name",
+    "bio",
+    "slogan",
     "photo",
     "mentorships"
   );
@@ -48,6 +50,7 @@ exports.updateMe = asyncHandler(async (req, res, next) => {
     runValidators: true,
   });
 
+  console.log(updatedUser);
   res.status(200).json({
     status: "success",
     message: "User updated successfully",

@@ -4,32 +4,42 @@ import Skill from "../../../../model/Skill";
 import SkillCard from "./SkillCard";
 import SkillEditForm from "./SkillEditForm";
 import "./Skills.scss";
-
+import { RiAddLine } from "react-icons/ri";
 
 const Skills = () => {
-  const [displaySingle,setDisplaySingle] = useState(false);
-  const user = useAppSelector(state => state.user.data);
-  const [displayedSkill, setDisplayedSkill] = useState(user?.mySkills[0]);
+  const [displaySingle, setDisplaySingle] = useState(false);
+  const user = useAppSelector((state) => state.user.data);
+  const [displayedSkill, setDisplayedSkill] = useState<Skill>();
 
   const cardClickHandler = (skill: Skill) => {
     setDisplaySingle(!displaySingle);
-    setDisplayedSkill(skill);  
-  }
+    setDisplayedSkill(skill);
+  };
 
+  const addClickHandler = () => {
+    setDisplaySingle(!displaySingle);
+    setDisplayedSkill(undefined);
+  };
 
-  const singleSkillJSX = <SkillEditForm skill={displayedSkill!}/>
+  const singleSkillJSX = <SkillEditForm skill={displayedSkill} />;
 
-  const allSKillsJSX = <div className="skills-container">
-                          {user?.mySkills.map((skill) => (
-                            <SkillCard skill={skill} onClick= {cardClickHandler} key={skill.name}/>
-                          ))}
-                          {/* <SkillCard skill={{ name: "X", sp: 0, desc: "",experience: {info : "Native Speaker", years: 25} } onClick = ()} /> */}
-                        </div>
+  const allSKillsJSX = (
+    <div className="skills-container">
+      {user!.mySkills &&
+        user!.mySkills.map((skill) => (
+          <SkillCard
+            skill={skill}
+            onClick={cardClickHandler}
+            key={skill.name}
+          />
+        ))}
+      <RiAddLine className="skills-container__add" onClick={addClickHandler} />
+    </div>
+  );
 
+  const content = displaySingle ? singleSkillJSX : allSKillsJSX;
 
-  const content = displaySingle ? singleSkillJSX : allSKillsJSX
-
-  return (content);
+  return content;
 };
 
 export default Skills;

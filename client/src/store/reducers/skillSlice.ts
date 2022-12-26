@@ -1,16 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import User from "../../model/User";
-import {
-  createUser,
-  loginDummyUser,
-  loginUser,
-  logoutUser,
-  updateUser,
-} from "../actions/user-actions";
-import { dummyUser1, dummyUser2 } from "../../model/data/users";
-import Cookies from "universal-cookie";
-
-const cookie = new Cookies();
+import Skill from "../../model/User";
 
 interface userSliceState {
   isLoading: boolean;
@@ -20,7 +9,6 @@ interface userSliceState {
   token: string;
   data: null | User;
 }
-let user: User = JSON.parse(localStorage.getItem("user") || "{}");
 
 const initialState: userSliceState = {
   isLoading: false,
@@ -35,23 +23,7 @@ const initialState: userSliceState = {
 const userSlice = createSlice({
   name: "user",
   initialState,
-  reducers: {
-    setSkills(state, action) {
-      state.categories = action.payload;
-    },
-    setProducts(state, action) {
-      state.products = action.payload;
-    },
-    setActiveCategory(state, action) {
-      state.activeCategory = state.categories[action.payload];
-    },
-    addToCart(state, action) {
-      state.incomingItemId = action.payload;
-    },
-    setOrder(state, action) {
-      state.order = action.payload;
-    },
-  },
+  reducers: {},
   extraReducers(builder) {
     builder
       .addCase(loginUser.pending, (state) => {

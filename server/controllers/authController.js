@@ -21,14 +21,13 @@ const sendToken = (user, statusCode, res) => {
       Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
     ),
     secure: process.env.NODE_ENV === "development" ? false : true,
-    httpOnly: true,
+    httpOnly: false,
   });
 
   user.password = undefined;
   user.active = undefined;
 
   res.status(statusCode).json({
-    token,
     data: {
       user,
     },
@@ -42,7 +41,7 @@ exports.signUp = asyncHandler(async (req, res) => {
     password: req.body.password,
     changedPasswordAt: req.body.changedPasswordAt,
   });
-
+  console.log("@@@@");
   sendToken(user, 201, res);
 });
 

@@ -34,6 +34,13 @@ const userSchema = new mongoose.Schema(
       type: String,
       minLength: 20,
       maxLength: [350, "Bio must be under 350 characters"],
+      default: " ",
+    },
+    slogan: {
+      type: String,
+      minLength: 10,
+      maxLength: [70, "Slogan must be under 70 characters"],
+      default: " ",
     },
     changedPasswordAt: Date,
     passwordResetToken: String,

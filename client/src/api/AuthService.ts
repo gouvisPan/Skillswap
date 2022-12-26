@@ -1,9 +1,7 @@
 import axios, { AxiosResponse } from "axios";
-import { useAppSelector } from "../hooks/hooks";
 import ApiUser from "../model/ApiUser";
 import { NewUser } from "../model/auth/NewUser";
 import LoginCredentials from "../model/LoginCredentials";
-import User from "../model/User";
 
 // const url = `${process.env.SERVER_URL}`;
 const url = `/api/v1`;
@@ -14,6 +12,7 @@ export const fetchUser = async (
   const response = await axios.post<ApiUser>(
     `${url}/users/signin`,
     credentials,
+
     { withCredentials: true }
   );
   return response;
@@ -35,10 +34,18 @@ export const logoutUser = async () => {
 };
 
 export const updateUser = async (token: string, fieldsToUpdate: any) => {
-  const response = await axios.patch(`${url}/users/updateMe`, {
-    token,
-    fieldsToUpdate,
-  });
-
+  const response = await axios.patch(
+    `${url}/users/updateMe`,
+    {
+      name: fieldsToUpdate.name,
+      bio: fieldsToUpdate.bio,
+      slogan: fieldsToUpdate.slogan,
+    },
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
   return response;
 };

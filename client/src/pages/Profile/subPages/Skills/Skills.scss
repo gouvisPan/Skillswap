@@ -1,4 +1,4 @@
-  @import "../../../../sass/global";
+@import "../../../../sass/global";
 
 .skills-container {
   margin: 0 3rem;
@@ -6,6 +6,22 @@
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 2rem;
+
+  &__add {
+    font-size: 32px;
+    border-radius: 10rem;
+    padding: 0.5rem;
+    background-color: $color-primary-light;
+
+    &:hover {
+      filter: brightness(105%);
+      cursor: pointer;
+    }
+
+    &:active {
+      filter: brightness(110%);
+    }
+  }
 }
 
 .skill-card {

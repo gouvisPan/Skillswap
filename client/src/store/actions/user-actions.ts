@@ -5,7 +5,13 @@ import LoginCredentials from "../../model/LoginCredentials";
 import { dummyUser1 } from "../../model/data/users";
 import Cookies from "universal-cookie";
 
-const cookie = new Cookies();
+const cookies = new Cookies();
+
+interface BasicAttributes {
+  name: string;
+  slogan: string;
+  bio: string;
+}
 
 export const loginDummyUser = createAsyncThunk(
   "dummyuser/login",
@@ -25,9 +31,10 @@ export const loginUser = createAsyncThunk(
       const response = await api.fetchUser(credentials);
 
       if (response?.data) {
-        localStorage.setItem("user", JSON.stringify(response));
+        localStorage.setItem("user", JSON.stringify(response.data));
       }
       console.log(response);
+
       return response?.data;
     } catch (error: any) {
       thunkApi.rejectWithValue(error.message);
@@ -40,12 +47,12 @@ export const createUser = createAsyncThunk(
   async (user: NewUser, thunkApi) => {
     try {
       const response = await api.createUser(user);
-
       if (response) {
         localStorage.setItem("user", JSON.stringify(response));
       }
       console.log(response);
-      return response;
+
+      return response?.data;
     } catch (error: any) {
       thunkApi.rejectWithValue(error.message);
     }
@@ -68,18 +75,17 @@ export const logoutUser = createAsyncThunk(
 
 export const updateUser = createAsyncThunk(
   "user/updateMe",
-  async ([...attributes]: string[], thunkApi) => {
+  async (attributes: BasicAttributes, thunkApi) => {
     try {
-      const cookies = cookie.get("jwt_auth");
-      console.log(cookies);
-      const response = await api.updateUser("", {
+      const response = await api.updateUser(cookies.get("jwt_auth"), {
         ...attributes,
       });
-
+      console.log(attributes);
       if (response) {
         localStorage.setItem("user", JSON.stringify(response));
       }
-      return response;
+      console.log(response.data);
+      return response.data;
     } catch (error: any) {
       thunkApi.rejectWithValue(error.message);
     }

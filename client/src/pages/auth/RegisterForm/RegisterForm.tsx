@@ -15,14 +15,23 @@ const RegisterForm = () => {
       .max(23, "Pasword must be up to 23 characters")
       .required("Password is required"),
   });
-  const onSubmit = (email: string, name: string, password: string) => {
-    dispatch(
-      createUser({
-        email,
-        name,
-        password,
-      })
-    );
+  const onSubmit = (
+    email: string,
+    name: string,
+    password: string,
+    confirmPassword: string
+  ) => {
+    if (confirmPassword === password) {
+      dispatch(
+        createUser({
+          email,
+          name,
+          password,
+        })
+      );
+    } else {
+      console.log("PASSWORDS DOESNT MATCH");
+    }
   };
 
   return (
@@ -31,11 +40,16 @@ const RegisterForm = () => {
         name: "",
         email: "",
         password: "",
+        confirmPassword: "",
       }}
       validationSchema={validate}
       onSubmit={(values) => {
-        console.log(values);
-        onSubmit(values.email, values.name, values.password);
+        onSubmit(
+          values.email,
+          values.name,
+          values.password,
+          values.confirmPassword
+        );
       }}
     >
       {(formik) => (
@@ -48,7 +62,7 @@ const RegisterForm = () => {
               <TextField
                 pholder="confirm password"
                 type="password"
-                name="confirm-password"
+                name="confirmPassword"
               />
             </div>
             <button
