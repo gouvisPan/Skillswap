@@ -42,7 +42,8 @@ exports.updateMe = asyncHandler(async (req, res, next) => {
     "bio",
     "slogan",
     "photo",
-    "mentorships"
+    "mentorships",
+    "skills"
   );
 
   const updatedUser = await User.findByIdAndUpdate(req.user.id, filteredBody, {

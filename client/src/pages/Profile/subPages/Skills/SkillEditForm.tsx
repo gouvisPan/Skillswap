@@ -6,6 +6,7 @@ import TextField from "../../../../components/UI/TextField";
 import { useRef, useState } from "react";
 import { Form, Formik } from "formik";
 import { useAppDispatch } from "../../../../hooks/hooks";
+import { createSkill } from "../../../../store/actions/skill-actions";
 
 interface skillEditProps {
   skill: Skill | undefined;
@@ -19,17 +20,27 @@ const SkillEditForm: React.FC<skillEditProps> = (props) => {
     desc: Yup.string()
       .min(15, "Must be up to 15 characters")
       .required("Please enter a description"),
+    sp: Yup.number()
+      .min(10, "Minimum value for swap points is 10")
+      .max(25, "Maximum value for swap points is 25"),
     experienceDesc: Yup.string(),
     experienceYears: Yup.string(),
   });
 
   const onSubmit = (
     name: string,
+    sp: number,
     desc: string,
     experienceDesc: string,
-    experienceYears: string
+    experienceYears: number
   ) => {
-    // props.skill ? dispatch((name , desc, experienceDesc, experienceYears));
+    const tmpSkill = new Skill(name, sp, desc, {
+      info: experienceDesc,
+      years: +experienceYears,
+    });
+
+    dispatch(createSkill(tmpSkill));
+    console.log(tmpSkill);
   };
 
   return (
@@ -37,6 +48,7 @@ const SkillEditForm: React.FC<skillEditProps> = (props) => {
       initialValues={{
         name: props.skill?.name || "",
         desc: props.skill?.desc || "",
+        sp: props.skill?.sp || 1,
         experienceDesc: props.skill?.experience.info || "",
         experienceYears: props.skill?.experience.years.toString() || "",
       }}
@@ -44,9 +56,10 @@ const SkillEditForm: React.FC<skillEditProps> = (props) => {
       onSubmit={(values) => {
         onSubmit(
           values.name,
+          values.sp,
           values.desc,
           values.experienceDesc,
-          values.experienceYears
+          parseInt(values.experienceYears)
         );
       }}
     >
@@ -59,6 +72,13 @@ const SkillEditForm: React.FC<skillEditProps> = (props) => {
                 name="name"
                 type="text"
                 pholder={props.skill?.name || "Skill Name"}
+                className=" "
+                isLarge={false}
+              />
+              <TextField
+                name="sp"
+                type="number"
+                pholder={props.skill?.sp.toString() || "Swap Points (10 - 25)"}
                 className=" "
                 isLarge={false}
               />

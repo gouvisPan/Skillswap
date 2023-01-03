@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const bcryptjs = require("bcryptjs");
 const crypto = require("crypto");
+const Skill = require("./skillModel");
 
 const userSchema = new mongoose.Schema(
   {
@@ -62,20 +63,21 @@ const userSchema = new mongoose.Schema(
         ref: "Mentorship",
       },
     ],
-    skills: [
-      {
-        type: mongoose.Schema.ObjectId,
-        ref: "Skill",
-      },
-    ],
+    skills: Array,
   },
   { timestamps: true }
 );
 
 userSchema.pre("save", async function (next) {
   if (!this.isModified("password") || this.isNew) return next();
-
   this.changedPasswordAt = Date.now() - 1000;
+
+  next();
+});
+
+userSchema.pre("save", async function (next) {
+  const skillPromises = this.skills.map(async (id) => await Skill.findById(id));
+  this.skills = await Promise.all(skillPromises);
 
   next();
 });

@@ -30,6 +30,7 @@ const sendToken = (user, statusCode, res) => {
   res.status(statusCode).json({
     data: {
       user,
+      token,
     },
   });
 };

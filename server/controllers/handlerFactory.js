@@ -18,8 +18,7 @@ exports.deleteOne = (Model) =>
 exports.createOne = (Model) =>
   asyncHandler(async (req, res, next) => {
     const document = await Model.create(req.body);
-
-    res.status(201).json({
+    -res.status(201).json({
       message: "Document created successfully!",
       data: {
         data: document,
