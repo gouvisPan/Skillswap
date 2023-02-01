@@ -1,5 +1,5 @@
 const express = require("express");
-const skillController = require("../controllers/skillController");
+const skillController = require("../models/skillController");
 const authController = require("../controllers/authController");
 const router = express.Router();
 
@@ -14,6 +14,6 @@ router
   .get(authController.protect, skillController.getSkill)
   .post(authController.protect, skillController.createSkill)
   .patch(authController.protect, skillController.updateSkill)
-  .delete(skillController.deleteSkill);
+  .delete(authController.protect, skillController.deleteSkill);
 
 module.exports = router;

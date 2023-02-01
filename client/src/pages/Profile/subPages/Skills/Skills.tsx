@@ -1,23 +1,25 @@
 import React, { useState } from "react";
-import { useAppSelector } from "../../../../hooks/hooks";
+import { useAppDispatch, useAppSelector } from "../../../../hooks/hooks";
 import Skill from "../../../../model/Skill";
 import SkillCard from "./SkillCard";
 import SkillEditForm from "./SkillEditForm";
 import "./Skills.scss";
 import { RiAddLine } from "react-icons/ri";
+import { uiActions } from "../../../../store/reducers/ui-slice";
 
 const Skills = () => {
-  const [displaySingle, setDisplaySingle] = useState(false);
-  const user = useAppSelector((state) => state.user.data);
+  const displaySingle = useAppSelector((state) => state.ui.isSkillEditing);
+  const skills = useAppSelector((state) => state.skill.skills);
+  const dispatch = useAppDispatch();
   const [displayedSkill, setDisplayedSkill] = useState<Skill>();
 
   const cardClickHandler = (skill: Skill) => {
-    setDisplaySingle(!displaySingle);
+    dispatch(uiActions.onSkillEdit());
     setDisplayedSkill(skill);
   };
 
   const addClickHandler = () => {
-    setDisplaySingle(!displaySingle);
+    dispatch(uiActions.onSkillEdit());
     setDisplayedSkill(undefined);
   };
 
@@ -25,8 +27,8 @@ const Skills = () => {
 
   const allSKillsJSX = (
     <div className="skills-container">
-      {user!.mySkills &&
-        user!.mySkills.map((skill) => (
+      {skills &&
+        skills.map((skill) => (
           <SkillCard
             skill={skill}
             onClick={cardClickHandler}

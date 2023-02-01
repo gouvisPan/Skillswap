@@ -10,7 +10,7 @@ const HeroSection = () => {
         <h1>Find a SkillSwap partner, with a simple search </h1>
         <SearchBar />
       </div>
-      <img src={heroSvg} />
+      <img src={heroSvg} alt="hero" />
     </div>
   );
 };

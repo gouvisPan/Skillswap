@@ -13,7 +13,7 @@ class User {
   bio: string;
   mentorships: Mentorship[];
   myMenteeships: Menteeship[];
-  mySkills: Skill[];
+  skills: Skill[];
 
   constructor(mName: string, mEmail: string, mPassword: string) {
     this.name = mName;
@@ -24,7 +24,7 @@ class User {
     this.photo = "";
     this.mentorships = [];
     this.myMenteeships = [];
-    this.mySkills = [];
+    this.skills = [];
     this.slogan = "";
     this.bio = "";
   }

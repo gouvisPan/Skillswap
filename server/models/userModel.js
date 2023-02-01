@@ -63,7 +63,12 @@ const userSchema = new mongoose.Schema(
         ref: "Mentorship",
       },
     ],
-    skills: Array,
+    skills: [
+      {
+        type: mongoose.Schema.ObjectId,
+        ref: "Skill",
+      },
+    ],
   },
   { timestamps: true }
 );
@@ -75,19 +80,12 @@ userSchema.pre("save", async function (next) {
   next();
 });
 
-userSchema.pre("save", async function (next) {
-  const skillPromises = this.skills.map(async (id) => await Skill.findById(id));
-  this.skills = await Promise.all(skillPromises);
-
-  next();
-});
-
 userSchema.pre(/^find/, function (next) {
   this.find({ active: true });
   next();
 });
 userSchema.pre(/^find/, function (next) {
-  this.populate("mentorships").populate("menteeships");
+  this.populate("mentorships").populate("menteeships").populate("skills");
   next();
 });
 

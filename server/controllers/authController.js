@@ -42,7 +42,7 @@ exports.signUp = asyncHandler(async (req, res) => {
     password: req.body.password,
     changedPasswordAt: req.body.changedPasswordAt,
   });
-  console.log("@@@@");
+
   sendToken(user, 201, res);
 });
 

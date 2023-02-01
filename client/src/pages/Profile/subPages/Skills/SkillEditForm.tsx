@@ -7,6 +7,7 @@ import { useRef, useState } from "react";
 import { Form, Formik } from "formik";
 import { useAppDispatch } from "../../../../hooks/hooks";
 import { createSkill } from "../../../../store/actions/skill-actions";
+import { uiActions } from "../../../../store/reducers/ui-slice";
 
 interface skillEditProps {
   skill: Skill | undefined;
@@ -118,7 +119,20 @@ const SkillEditForm: React.FC<skillEditProps> = (props) => {
                 />
               </div>
             </div>
-            <button type="submit">Save</button>
+            <div className="skillform__content__btn-area">
+              <button
+                className="skillform__content__btn-area__back"
+                onClick={() => dispatch(uiActions.offSkillEdit())}
+              >
+                Back
+              </button>
+              <button
+                type="submit"
+                className="skillform__content__btn-area__submit"
+              >
+                Save
+              </button>
+            </div>
           </Form>
         </div>
       )}

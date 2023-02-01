@@ -17,9 +17,9 @@ function App() {
   const user = useAppSelector((state) => state.user);
   const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    console.log(user);
-  }, [user]);
+  // useEffect(() => {
+  //   console.log(user);
+  // }, [user]);
 
   return (
     <Router>

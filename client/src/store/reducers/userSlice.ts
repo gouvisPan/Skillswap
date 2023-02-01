@@ -2,12 +2,10 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import User from "../../model/User";
 import {
   createUser,
-  loginDummyUser,
   loginUser,
   logoutUser,
   updateUser,
 } from "../actions/user-actions";
-import { dummyUser1, dummyUser2 } from "../../model/data/users";
 import Cookies from "universal-cookie";
 
 const cookie = new Cookies();

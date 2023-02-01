@@ -8,7 +8,7 @@ import MenteeItem from ".././MenteeItem/MenteeItem";
 import "./MyMenteeships.scss";
 
 const MyMenteeships = () => {
-  const mySkills = useAppSelector((state) => state.user.data!.mySkills);
+  const mySkills = useAppSelector((state) => state.user.data!.skills);
   const myMenteeships = useAppSelector(
     (state) => state.user.data!.myMenteeships
   );

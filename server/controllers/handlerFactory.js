@@ -1,8 +1,10 @@
 const asyncHandler = require("express-async-handler");
 const AppError = require("../utils/appError");
 const APIFeatures = require("../utils/apiFeatures");
+const User = require("../models/userModel");
+const { ObjectId } = require("mongodb");
 
-exports.deleteOne = (Model) =>
+exports.deleteOne = (Model, type) =>
   asyncHandler(async (req, res, next) => {
     const doc = await Model.findByIdAndDelete(req.params.id);
 
@@ -15,10 +17,22 @@ exports.deleteOne = (Model) =>
     });
   });
 
-exports.createOne = (Model) =>
+exports.createOne = (Model, type) =>
   asyncHandler(async (req, res, next) => {
     const document = await Model.create(req.body);
-    -res.status(201).json({
+
+    if (type === "skill") {
+      const activeUser = await User.findByIdAndUpdate(req.user.id);
+      activeUser.skills.push(ObjectId(document._id));
+      activeUser.save();
+    }
+    if (type === "mentoring") {
+      const activeUser = await User.findByIdAndUpdate(req.user.id);
+      activeUser.mentorships.push(ObjectId(document._id));
+      activeUser.save();
+    }
+
+    res.status(201).json({
       message: "Document created successfully!",
       data: {
         data: document,

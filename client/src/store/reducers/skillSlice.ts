@@ -1,15 +1,17 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import Skill from "../../model/User";
+import { useAppDispatch } from "../../hooks/hooks";
+import Skill from "../../model/Skill";
 import { createSkill } from "../actions/skill-actions";
+import uiSlice from "./ui-slice";
 
-interface userSliceState {
+interface skillSliceState {
   isLoading: boolean;
   isSuccess: boolean;
   error: null | string;
   skills: Skill[];
 }
 
-const initialState: userSliceState = {
+const initialState: skillSliceState = {
   isLoading: false,
   isSuccess: false,
   error: null,
@@ -19,7 +21,11 @@ const initialState: userSliceState = {
 const skillSlice = createSlice({
   name: "skills",
   initialState,
-  reducers: {},
+  reducers: {
+    loadInitials(state, action: PayloadAction<Skill[]>) {
+      state.skills = action.payload;
+    },
+  },
   extraReducers(builder) {
     builder
       .addCase(createSkill.pending, (state) => {

@@ -2,6 +2,9 @@ import * as api from "../../api/CRUDService";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import Cookies from "universal-cookie";
 import Skill from "../../model/Skill";
+import { useAppDispatch } from "../../hooks/hooks";
+import { uiActions } from "../reducers/ui-slice";
+import { userActions } from "../reducers/userSlice";
 
 const cookies = new Cookies();
 
@@ -11,14 +14,11 @@ export const createSkill = createAsyncThunk(
     try {
       const response = await api.createSkill(cookies.get("jwt_auth"), skill);
 
-      if (response?.data) {
-        localStorage.setItem("user", JSON.stringify(response.data));
-      }
-      console.log(response);
+      thunkApi.dispatch(uiActions.offSkillEdit());
 
       return response?.data;
     } catch (error: any) {
-      thunkApi.rejectWithValue(error.message);
+      return thunkApi.rejectWithValue(error.message);
     }
   }
 );

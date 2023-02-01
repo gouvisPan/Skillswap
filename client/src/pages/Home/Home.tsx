@@ -1,5 +1,5 @@
 import React from "react";
-import HeroSection from "./HeroSection/HeroSection";
+import HeroSection from "../../components/Header/HeroSection/HeroSection";
 import PopularSkills from "./PopularSkills/PopularSkills";
 import "./Home.scss";
 

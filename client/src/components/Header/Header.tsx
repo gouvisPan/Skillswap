@@ -4,6 +4,8 @@ import logo from "./../../assets/images/logo-no-bg.png";
 import logoW from "./../../assets/images/logo-w.png";
 import { NavLink, useLocation } from "react-router-dom";
 import useScroll from "../../hooks/useScroll";
+import { BarLoader } from "react-spinners";
+import "../../components/UI/Spinner.scss";
 
 const Header = () => {
   const scrollPosition = useScroll();
@@ -17,6 +19,7 @@ const Header = () => {
       <NavLink to="home">
         {!expression && <img src={logoW} alt="logo"></img>}
       </NavLink>
+
       <Navbar scrolled={scrollPosition > 12} />
     </div>
   );

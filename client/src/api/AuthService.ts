@@ -9,21 +9,32 @@ const url = `/api/v1`;
 export const fetchUser = async (
   credentials: LoginCredentials
 ): Promise<AxiosResponse | null> => {
-  const response = await axios.post<ApiUser>(
-    `${url}/users/signin`,
-    credentials,
+  const response = await axios
+    .post<ApiUser>(
+      `${url}/users/signin`,
+      credentials,
 
-    { withCredentials: true }
-  );
+      { withCredentials: true }
+    )
+    .catch((err) => {
+      throw err;
+    });
+
+  console.log(response);
   return response;
 };
 
 export const createUser = async (
   user: NewUser
 ): Promise<AxiosResponse | null> => {
-  const response = await axios.post(`${url}/users/signup`, user, {
-    withCredentials: true,
-  });
+  const response = await axios
+    .post(`${url}/users/signup`, user, {
+      withCredentials: true,
+    })
+    .catch((err) => {
+      throw err;
+    });
+  console.log(response);
   return response;
 };
 
@@ -34,18 +45,23 @@ export const logoutUser = async () => {
 };
 
 export const updateUser = async (token: string, fieldsToUpdate: any) => {
-  const response = await axios.patch(
-    `${url}/users/updateMe`,
-    {
-      name: fieldsToUpdate.name,
-      bio: fieldsToUpdate.bio,
-      slogan: fieldsToUpdate.slogan,
-    },
-    {
-      headers: {
-        Authorization: `Bearer ${token}`,
+  const response = await axios
+    .patch(
+      `${url}/users/updateMe`,
+      {
+        name: fieldsToUpdate.name,
+        bio: fieldsToUpdate.bio,
+        slogan: fieldsToUpdate.slogan,
       },
-    }
-  );
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
+    .catch((err) => {
+      throw err;
+    });
+  console.log(response);
   return response;
 };
